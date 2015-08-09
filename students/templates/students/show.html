@@ -1,0 +1,7 @@
+{{ student.fullname }}
+
+<ul>
+{% for mark in student.mark_set.all %}
+    <li>{{ mark.mark }} - {{ mark.comment }}</li>
+{% endfor %}
+</ul>

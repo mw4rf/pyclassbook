@@ -1,0 +1,22 @@
+{% load navactive %}
+
+<nav class="navbar navbar-default">
+     <div class="container-fluid">
+         <div class="navbar-header">
+             <a class="navbar-brand" href="#">pyClassBook</a>
+         </div>
+  
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="{% navactive request 'students:index' %}">
+                    <a href="{% url 'students:index' %}">Students</a>
+                </li>
+                <li class="{% navactive request 'courses:index' %}">
+                    <a href="{% url 'courses:index' %}">Courses</a>
+                </li>
+             </ul>
+        </div>
+        
+    </div>
+  
+</nav>

@@ -1,7 +1,42 @@
-{{ student.fullname }}
+{% extends "base.html" %}
 
-<ul>
-{% for mark in student.mark_set.all %}
-    <li>{{ mark.mark }} - {{ mark.comment }}</li>
-{% endfor %}
-</ul>
+{% load students_tags %}
+
+{% block content %}
+    
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{ student.fullname }}</h1>
+        </div>
+    </div>
+
+<div class="container"> 
+    {% for course in student.courses.all %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+          <h3>{{ course.name }}</h3>
+      </div>
+      <div class="panel-body">
+          <p>Moyenne : {{ student|average_for_course:course }}</p>
+      </div>
+      <table class="table">
+            <tr>
+                <th>Date</th>
+                <th>Note</th>
+                <th>Examen</th>
+                <th>Sujet</th>
+            </tr>
+            {% for m in student|marks_for_course:course %}
+            <tr>
+                <td>{{ m.subject.exam.date }}</td>
+                <td>{{ m.mark }}</td>
+                <td>{{ m.subject.exam.name }}</td>
+                <td>{{ m.subject.title }}</td>
+            </tr>
+            {% endfor %}
+      </table>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 from .models import Course
+from students.models import Student
 
 def index(request):
     ''' List of courses. '''
@@ -12,6 +13,7 @@ def show(request, course_id):
     ''' Show a course details. '''
     try:
         course = Course.objects.get(pk=course_id)
+        students = Student.objects.filter(courses__id=course_id)
     except Course.DoesNotExist:
         raise Http404("This course doesn't exist.")
-    return render(request, 'courses/show.html', {'course': course})
+    return render(request, 'courses/show.html', {'course': course, 'students': students})

@@ -1,1 +1,29 @@
-{{ course.name }}
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{ course.name }}</h1>
+        </div>
+    </div>
+
+<div class="container">    
+    <div class="panel panel-default">
+      <div class="panel-heading">Étudiants</div>
+      <table>
+          <tr>
+              <th>Nom</th>
+              <th>e-mail</th>
+          </tr>
+          {% for s in students %}
+          <tr>
+              <td>{{ s }}</td>
+              <td><a href="mailto:{{s.email}}">{{ s.email }}</a></td>
+          </tr>
+          {% endfor %}
+      </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -11,6 +11,9 @@ class Exam(models.Model):
     
     def __str__(self):
         return self.name + " (" + str(self.course) + ")"
+        
+    def subjects(self):
+        return Subject.objects.filter(exam=self.id)
     
 class Subject(models.Model):
     exam =      models.ForeignKey(Exam)

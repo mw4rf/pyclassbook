@@ -18,7 +18,7 @@
           <h3>{{ course.name }}</h3>
       </div>
       <div class="panel-body">
-          <p>Moyenne : {{ student|average_for_course:course }}</p>
+          <p>Moyenne : {{ student|average_for_course:course|colorize_mark }}</p>
       </div>
       <table class="table">
             <tr>
@@ -30,9 +30,14 @@
             {% for m in student|marks_for_course:course %}
             <tr>
                 <td>{{ m.subject.exam.date }}</td>
-                <td>{{ m.mark|colorize_mark }}</td>
+                {% if m.mark >= 10 %}
+                    <td class="bg-success">
+                {% else %}
+                    <td class="bg-danger">
+                {% endif %}
+                    {{ m.mark|colorize_mark }}</td>
                 <td>{{ m.subject.exam.name }}</td>
-                <td>{{ m.subject.title }}</td>
+                <td>{{ m.subject.kind }}</td>
             </tr>
             {% endfor %}
       </table>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <div class="jumbotron">
+        <div class="container">
+            <h1>{{ exam }}</h1>
+        </div>
+    </div>
+
+<div class="container">    
+    <div class="panel panel-default">
+      <div class="panel-heading">Sujets</div>
+      <ul class="list-group">
+        {% for s in exam.subjects %}
+            <li class="list-group-item">
+                <a href="{% url 'exams:subject' s.id %}">{{ s.kind }}</a>
+            </li>
+        {% endfor %}
+      </ul>
+    </div>
+</div>
+
+{% endblock %}

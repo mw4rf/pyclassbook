@@ -9,3 +9,4 @@ def average_for_course(student, course):
 @register.filter(name='marks_for_course')
 def marks_for_course(student, course):
     return student.marks_for_course(course)
+    

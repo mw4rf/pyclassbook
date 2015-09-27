@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load students_tags %}
+{% load marks_tags %}
 
 {% block content %}
     
@@ -29,7 +30,7 @@
             {% for m in student|marks_for_course:course %}
             <tr>
                 <td>{{ m.subject.exam.date }}</td>
-                <td>{{ m.mark }}</td>
+                <td>{{ m.mark|colorize_mark }}</td>
                 <td>{{ m.subject.exam.name }}</td>
                 <td>{{ m.subject.title }}</td>
             </tr>

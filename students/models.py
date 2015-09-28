@@ -4,7 +4,11 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 
 from courses.models import Course
 
+import uuid
+
 class Student(models.Model):
+    # UUID
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # Fields
     firstname   = models.CharField(max_length = 100)
     lastname    = models.CharField(max_length = 100)
@@ -51,7 +55,10 @@ class Student(models.Model):
             if m.subject.exam.course == course:
                 marks = marks + m.mark
                 index = index + 1
-        return marks / index
+        try:
+            return marks / index
+        except ZeroDivisionError:
+            return 0
     
     # Fields label in admin area (only for methods)
     fullname.short_description = "Name"

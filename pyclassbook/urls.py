@@ -17,8 +17,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^$', include('home.urls', namespace='home')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^students/', include('students.urls', namespace='students')),
-        url(r'^exams/', include('exams.urls', namespace='exams')),
+    url(r'^exams/', include('exams.urls', namespace='exams')),
     url(r'^courses/', include('courses.urls', namespace='courses')),
 ]

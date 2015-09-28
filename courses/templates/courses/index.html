@@ -1,11 +1,27 @@
 {% extends "base.html" %}
+{% load courses_tags %}
 
 {% block content %}
 
-<ul>
-{% for course in courses %}
-    <li><a href="{% url 'courses:show' course.id %}">{{ course.name }}</a></li>
-{% endfor %}
-</ul>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Year</th>
+            <th>Level</th>
+            <th>Kind</th>
+            <th>Place</th>
+        </tr>
+        {% for c in courses %}
+        <tr>
+            <td><a href="{% url 'courses:show' c.id %}">{{ c.name }}</a></td>
+            <td>{{ c|course_years }}</td>
+            <td>{{ c.level }}</td>
+            <td>{{ c.kind }}</td>
+            <td>{{ c.place }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}

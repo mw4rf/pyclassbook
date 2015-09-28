@@ -4,6 +4,7 @@ class Course(models.Model):
     name =          models.CharField(max_length = 254)
     level =         models.CharField(max_length=10, blank=True)
     place =         models.CharField(max_length = 254, blank=True)
+    kind =          models.CharField(max_length = 254, blank=True)
     comments =      models.TextField(blank=True)
     start_date =    models.DateField(blank=True)
     end_date =      models.DateField(blank=True)

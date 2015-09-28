@@ -68,10 +68,14 @@ class Student(models.Model):
     
 
 class Mark(models.Model):
+    # UUID
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # Fields
     student     = models.ForeignKey(Student)
     subject     = models.ForeignKey('exams.Subject')
     mark        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(20)])
     comment     = models.TextField(blank=True)
+    # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
     

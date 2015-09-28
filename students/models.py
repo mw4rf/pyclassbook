@@ -5,11 +5,18 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from courses.models import Course
 
 class Student(models.Model):
+    # Fields
     firstname   = models.CharField(max_length = 100)
     lastname    = models.CharField(max_length = 100)
     email       = models.EmailField(max_length = 254)
+    email_alt   = models.EmailField(max_length = 254, blank=True)
+    birth       = models.DateField(null=True)
+    native_lang = models.BooleanField(default=True)
+    third_time  = models.BooleanField(default=False)
+    # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
+    # Relations
     courses     = models.ManyToManyField(Course)
     
     def __str__(self):

@@ -9,7 +9,7 @@ class MarkInline(admin.TabularInline):
 
 class StudentAdmin(admin.ModelAdmin):
     inlines = [MarkInline]
-    list_display = ('fullname', 'email', 'updated_at')
+    list_display = ('fullname', 'email', 'updated_at', 'native_lang', 'third_time')
     search_fields = ['firstname', 'lastname', 'email']
 
 # Register models

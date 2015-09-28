@@ -1,11 +1,23 @@
 {% extends "base.html" %}
+{% load students_tags %}
 
 {% block content %}
 
-<ul>
-{% for student in students %}
-    <li><a href="{% url 'students:show' student.id %}">{{ student.fullname }}</a></li>
-{% endfor %}
-</ul>
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>e-mail</th>
+            <th>Courses</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td><a href="{% url 'students:show' s.id %}">{{ s.fullname }}</a></td>
+            <td>{{ s.email }}</td>
+            <td>{{ s.courses.all|format_courses }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
 
 {% endblock %}

@@ -10,3 +10,9 @@ def average_for_course(student, course):
 def marks_for_course(student, course):
     return student.marks_for_course(course)
     
+@register.filter
+def format_courses(courses):
+    result = ""
+    for c in courses:
+        result = result + c.name + " "
+    return result

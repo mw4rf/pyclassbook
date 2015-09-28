@@ -5,6 +5,7 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 from courses.models import Course
 
 import uuid
+import statistics
 
 class Student(models.Model):
     # UUID
@@ -58,6 +59,25 @@ class Student(models.Model):
         try:
             return marks / index
         except ZeroDivisionError:
+            return 0
+    
+    def stddev(self):
+        marks = []
+        for m in Mark.object.filter(student=self.id):
+            mark.add(m.mark)
+        try:
+            return statistics.stdev(marks)
+        except: #less than 2 marks : can't compute variance, exception thrown
+            return 0
+    
+    def stddev_for_course(self, course):
+        marks = []
+        for m in Mark.objects.filter(student=self.id):
+            if m.subject.exam.course == course:
+                marks.add(m.mark)
+        try:
+            return statistics.stdev(marks)
+        except: #less than 2 marks : can't compute variance, exception thrown
             return 0
     
     # Fields label in admin area (only for methods)

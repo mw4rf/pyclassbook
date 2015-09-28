@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load students_tags %}
+{% load marks_tags %}
+
 
 {% block content %}
     
@@ -11,15 +14,25 @@
 <div class="container">    
     <div class="panel panel-default">
       <div class="panel-heading">Étudiants</div>
-      <table>
+      <table class="table">
           <tr>
               <th>Nom</th>
+              <th>Average</th>
+              <th>Std. Dev.</th>
+              <th>Marks count</th>
               <th>e-mail</th>
+              <th>Natv. Lang.</th>
+              <th>3rd Time</th>
           </tr>
-          {% for s in students %}
+          {% for student in students %}
           <tr>
-              <td>{{ s }}</td>
-              <td><a href="mailto:{{s.email}}">{{ s.email }}</a></td>
+              <td><a href="{% url 'students:show' student.id %}">{{ student }}</a></td>
+              <td>{{ student|average_for_course:course|colorize_mark }}</td>
+              <td>{{ student|stddev_for_course:course }}</td>
+              <td>{{ student|count_marks_for_course:course }}</td>
+              <td><a href="mailto:{{s.email}}">{{ student.email }}</a></td>
+              <td>{{ student.native_lang }}</td>
+              <td>{{ student.third_time }}</td>
           </tr>
           {% endfor %}
       </table>

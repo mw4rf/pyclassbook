@@ -18,7 +18,11 @@
           <h3>{{ course.name }}</h3>
       </div>
       <div class="panel-body">
-          <p>Moyenne : {{ student|average_for_course:course|colorize_mark }}</p>
+          <p>
+              Moyenne : {{ student|average_for_course:course|colorize_mark }},
+              Écart-Type : {{ student|stddev_for_course:course|colorize_mark }},
+              Nombre de notes : {{ student|count_marks_for_course:course }}
+          </p>
       </div>
       <table class="table">
             <tr>

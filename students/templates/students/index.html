@@ -14,7 +14,7 @@
         <tr>
             <td><a href="{% url 'students:show' s.id %}">{{ s.fullname }}</a></td>
             <td>{{ s.email }}</td>
-            <td>{{ s.courses.all|format_courses }}</td>
+            <td><span style="display: inline-block;">{{ s.courses.all|courses_for_student }}</span></td>
         </tr>
         {% endfor %}
     </table>

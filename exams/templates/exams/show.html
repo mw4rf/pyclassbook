@@ -76,9 +76,9 @@ Exam: {{ name }} ({{c}})
           </tr>
           {% for mark in exam.marks %}
               <tr>
-                  <td>{{ mark.student }}</td>
+                  <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
                   <td>{{ mark.mark }}</td>
-                  <td>{{ mark.subject.kind }}</td>
+                  <td><a href="{% url 'exams:subject' mark.subject.id %}">{{ mark.subject.kind }}</a></td>
               </tr>
           {% endfor %}
       </table>

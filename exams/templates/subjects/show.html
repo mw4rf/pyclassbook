@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load i18n %}
+{% load marks_tags %}
 
 {% block title %}
 {% blocktrans trimmed with name=subject.exam.name kind=subject.kind %}
@@ -27,7 +28,7 @@ Subject: {{ name }} ({{kind}})
               {% for mark in subject.marks %}
                   <tr>
                       <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
-                      <td>{{ mark.mark }}</td>
+                      <td>{{ mark.mark|colorize_mark }}</td>
                       <td>{{ mark.comment }}</td>
                   </tr>
               {% endfor %}

@@ -5,7 +5,7 @@ from .models import Exam, Subject
 
 def index(request):
     ''' List of exams. '''
-    exams = Exam.objects.order_by('date')
+    exams = Exam.objects.order_by('course')
     context = {'exams': exams}
     return render(request, 'exams/index.html', context)
     

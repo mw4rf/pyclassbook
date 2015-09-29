@@ -4,6 +4,8 @@ from django.utils.translation import ugettext as _
 
 import uuid
 
+from students.models import Mark
+
 class Exam(models.Model):
     # UUID
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
@@ -23,9 +25,14 @@ class Exam(models.Model):
         
     def __str__(self):
         return self.name + " (" + str(self.course) + ")"
-        
+    
+    @property    
     def subjects(self):
         return Subject.objects.filter(exam=self.id)
+    
+    @property    
+    def marks(self):
+        return Mark.objects.filter(subject__in=self.subjects)
     
 class Subject(models.Model):
     # UUID

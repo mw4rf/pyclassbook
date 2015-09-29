@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 14:36+0200\n"
+"POT-Creation-Date: 2015-09-29 14:52+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,7 +29,7 @@ msgid "Level"
 msgstr "Niveau"
 
 #: courses/models.py:13 courses/templates/courses/index.html:16
-#: exams/models.py:15
+#: exams/models.py:15 exams/templates/exams/index.html:14
 msgid "Place"
 msgstr "Lieu"
 
@@ -50,7 +50,7 @@ msgstr "Date de début"
 msgid "End date"
 msgstr "Date de fin"
 
-#: courses/models.py:23 exams/models.py:12
+#: courses/models.py:23 exams/models.py:12 exams/templates/exams/index.html:12
 msgid "Course"
 msgstr "Cours"
 
@@ -98,11 +98,12 @@ msgstr "Lang. mater."
 msgid "3rd Time"
 msgstr "Tiers tps."
 
-#: exams/models.py:13 students/templates/students/show.html:36
+#: exams/models.py:13 exams/templates/exams/index.html:11
+#: students/templates/students/show.html:36
 msgid "Date"
 msgstr "Date"
 
-#: exams/models.py:14
+#: exams/models.py:14 exams/templates/exams/index.html:13
 msgid "Time Allowed"
 msgstr "Temps alloué"
 
@@ -120,9 +121,13 @@ msgstr "Titre"
 msgid "Subject"
 msgstr "Sujet"
 
-#: exams/templates/exams/index.html:6
+#: exams/templates/exams/index.html:4
 msgid "Exams List"
 msgstr "Examens"
+
+#: exams/templates/exams/index.html:20
+msgid "hour(s)"
+msgstr "heure(s)"
 
 #: exams/templates/exams/show.html:5
 #, python-format
@@ -151,7 +156,11 @@ msgstr "Anglais"
 msgid "Courses"
 msgstr "Cours"
 
-#: shared/templates/navbar.html:21
+#: shared/templates/navbar.html:19
+msgid "Exams"
+msgstr "Examens"
+
+#: shared/templates/navbar.html:24
 msgid "Admin"
 msgstr "Administration"
 

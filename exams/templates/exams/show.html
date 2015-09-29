@@ -9,15 +9,15 @@ Exam: {{ name }} ({{c}})
 
 {% block content %}
     
-    <div class="jumbotron">
-        <div class="container">
-            <h1>{{ exam }}</h1>
-        </div>
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{ exam }}</h1>
     </div>
+</div>
 
 <div class="container">    
     <div class="panel panel-default">
-      <div class="panel-heading">Sujets</div>
+      <div class="panel-heading">{% trans "Subjects" %}</div>
       <ul class="list-group">
         {% for s in exam.subjects %}
             <li class="list-group-item">
@@ -26,6 +26,25 @@ Exam: {{ name }} ({{c}})
         {% endfor %}
       </ul>
     </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading">{% trans "Marks" %}</div>
+      <table class="table">
+          <tr>
+              <th>{% trans "Student" %}</th>
+              <th>{% trans "Mark" %}</th>
+              <th>{% trans "Subject" %}</th>
+          </tr>
+          {% for mark in exam.marks %}
+              <tr>
+                  <td>{{ mark.student }}</td>
+                  <td>{{ mark.mark }}</td>
+                  <td>{{ mark.subject.kind }}</td>
+              </tr>
+          {% endfor %}
+      </table>
 </div>
 
 {% endblock %}

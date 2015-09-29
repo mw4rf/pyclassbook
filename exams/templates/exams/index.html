@@ -1,14 +1,28 @@
 {% extends "base.html" %}
 {% load i18n %}
 
-{% block content %}
-
 {% block title %}{% trans "Exams List"  %}{% endblock %}
 
-<ul>
-{% for exam in exams %}
-    <li><a href="{% url 'exams:exam' exam.id %}">{{ exam }}</a></li>
-{% endfor %}
-</ul>
+{% block content %}
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>{% trans "Date" %}</th>
+            <th>{% trans "Course" %}</th>
+            <th>{% trans "Time Allowed" %}</th>
+            <th>{% trans "Place" %}</th>
+        </tr>
+    {% for exam in exams %}
+        <tr>
+            <td>{{ exam.date }}</td>
+            <td><a href="{% url 'exams:exam' exam.id %}">{{ exam }}</a></td>
+            <td>{{ exam.time_allowed }} {% trans "hour(s)" %}</td>
+            <td>{{ exam.place }}</td>
+        </tr>
+    {% endfor %}
+    </table>
+</div>
+
 
 {% endblock %}

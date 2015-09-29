@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<div class="container text-center">
+    <ul class="pagination">
+        {% if items.has_previous %}
+            <li><a href="?page=1"><span class="glyphicon glyphicon-fast-backward"></span></a></li>
+            <li><a href="?page={{ items.previous_page_number }}"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
+        {% else %}
+            <li class="disabled"><span class="glyphicon glyphicon-fast-backward"></span></li>
+            <li class="disabled"><span class="glyphicon glyphicon-chevron-left"></span></li>
+        {% endif %}
+
+        {% for i in items.paginator.page_range %}
+            <li {% if items.number == i %} class="active" {% endif %}>
+                <a href="?page={{i}}">{{i}}</a>
+            </li>
+        {% endfor %}
+
+        {% if items.has_next %}
+            <li><a href="?page={{ items.next_page_number }}"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
+            <li><a href="?page={{ items.paginator.num_pages }}"><span class="glyphicon glyphicon-fast-forward"></span></a></li>
+        {% else %}
+            <li class="disabled"><span class="glyphicon glyphicon-chevron-right"></span></li>
+            <li class="disabled"><span class="glyphicon glyphicon-fast-forward"></span></li>
+        {% endif %}
+    </ul>
+</div>

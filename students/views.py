@@ -12,8 +12,8 @@ def index_full(request):
     return render(request, 'students/index_full.html', context)
 
 def index(request):
-    students_list = Students.objects.order_by('lastname')
-    paginator = Paginator(students_list, 2) # Show 2 items per page
+    students_list = Student.objects.order_by('lastname')
+    paginator = Paginator(students_list, 100) # Show 100 items per page
 
     page = request.GET.get('page')
     try:
@@ -24,7 +24,7 @@ def index(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         students = paginator.page(paginator.num_pages)
-    return render_to_response('students/index.html', {"students": students})
+    return render(request, 'students/index.html', {"students": students})
     
 def show(request, student_id):
     ''' Show a student details. '''

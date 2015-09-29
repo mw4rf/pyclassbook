@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load students_tags %}
+{% load i18n %}
+
+{% block title %}{% trans "Students List"  %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "e-mail" %}</th>
+            <th>{% trans "Courses" %}</th>
+        </tr>
+        {% for s in students %}
+        <tr>
+            <td><a href="{% url 'students:show' s.id %}">{{ s.fullname }}</a></td>
+            <td>{{ s.email }}</td>
+            <td><span style="display: inline-block;">{{ s.courses.all|courses_for_student }}</span></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% include "paginate.html" with items=students %}
+{% endblock %}

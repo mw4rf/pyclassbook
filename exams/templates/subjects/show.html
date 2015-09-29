@@ -14,5 +14,24 @@ Subject: {{ name }} ({{kind}})
             <h1>{{ subject }}</h1>
         </div>
     </div>
+    
+    <div class="container">
+        <div class="panel panel-default">
+          <div class="panel-heading">{% trans "Marks" %}</div>
+          <table class="table">
+              <tr>
+                  <th>{% trans "Student" %}</th>
+                  <th>{% trans "Mark" %}</th>
+                  <th>{% trans "Comment" %}</th>
+              </tr>
+              {% for mark in subject.marks %}
+                  <tr>
+                      <td>{{ mark.student }}</td>
+                      <td>{{ mark.mark }}</td>
+                      <td>{{ mark.comment }}</td>
+                  </tr>
+              {% endfor %}
+          </table>
+    </div>
 
 {% endblock %}

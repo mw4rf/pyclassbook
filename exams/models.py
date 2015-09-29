@@ -50,4 +50,8 @@ class Subject(models.Model):
     
     def __str__(self):
         return str(self.exam) + "(" + self.kind + ")"
+        
+    @property
+    def marks(self):
+        return Mark.objects.filter(subject=self.id)
     

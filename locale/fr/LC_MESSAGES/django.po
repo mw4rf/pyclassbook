@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 14:52+0200\n"
+"POT-Creation-Date: 2015-09-29 15:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: courses/models.py:11 courses/templates/courses/index.html:12
-#: courses/templates/courses/show.html:26 exams/models.py:11
+#: courses/templates/courses/show.html:26 exams/models.py:13
 #: students/templates/students/index.html:12
 msgid "Name"
 msgstr "Nom"
@@ -29,16 +29,16 @@ msgid "Level"
 msgstr "Niveau"
 
 #: courses/models.py:13 courses/templates/courses/index.html:16
-#: exams/models.py:15 exams/templates/exams/index.html:14
+#: exams/models.py:17 exams/templates/exams/index.html:14
 msgid "Place"
 msgstr "Lieu"
 
 #: courses/models.py:14 courses/templates/courses/index.html:15
-#: exams/models.py:36
+#: exams/models.py:43
 msgid "Kind"
 msgstr "Type"
 
-#: courses/models.py:15 exams/models.py:16 students/models.py:101
+#: courses/models.py:15 exams/models.py:18 students/models.py:101
 msgid "Comments"
 msgstr "Commentaires"
 
@@ -50,7 +50,7 @@ msgstr "Date de début"
 msgid "End date"
 msgstr "Date de fin"
 
-#: courses/models.py:23 exams/models.py:12 exams/templates/exams/index.html:12
+#: courses/models.py:23 exams/models.py:14 exams/templates/exams/index.html:12
 msgid "Course"
 msgstr "Cours"
 
@@ -98,25 +98,25 @@ msgstr "Lang. mater."
 msgid "3rd Time"
 msgstr "Tiers tps."
 
-#: exams/models.py:13 exams/templates/exams/index.html:11
+#: exams/models.py:15 exams/templates/exams/index.html:11
 #: students/templates/students/show.html:36
 msgid "Date"
 msgstr "Date"
 
-#: exams/models.py:14 exams/templates/exams/index.html:13
+#: exams/models.py:16 exams/templates/exams/index.html:13
 msgid "Time Allowed"
 msgstr "Temps alloué"
 
-#: exams/models.py:22 exams/models.py:34
+#: exams/models.py:24 exams/models.py:41
 #: students/templates/students/show.html:38
 msgid "Exam"
 msgstr "Examen"
 
-#: exams/models.py:35
+#: exams/models.py:42
 msgid "Title"
 msgstr "Titre"
 
-#: exams/models.py:42 students/models.py:99
+#: exams/models.py:49 exams/templates/exams/show.html:38 students/models.py:99
 #: students/templates/students/show.html:39
 msgid "Subject"
 msgstr "Sujet"
@@ -134,10 +134,33 @@ msgstr "heure(s)"
 msgid "Exam: %(name)s (%(c)s)"
 msgstr "Examen : %(name)s (%(c)s)"
 
+#: exams/templates/exams/show.html:20
+msgid "Subjects"
+msgstr "Sujets"
+
+#: exams/templates/exams/show.html:33 exams/templates/subjects/show.html:20
+msgid "Marks"
+msgstr "Notes"
+
+#: exams/templates/exams/show.html:36 exams/templates/subjects/show.html:23
+#: students/models.py:29 students/models.py:98
+msgid "Student"
+msgstr "Étudiant"
+
+#: exams/templates/exams/show.html:37 exams/templates/subjects/show.html:24
+#: students/models.py:100 students/models.py:107
+#: students/templates/students/show.html:37
+msgid "Mark"
+msgstr "Note"
+
 #: exams/templates/subjects/show.html:5
 #, python-format
 msgid "Subject: %(name)s (%(kind)s)"
 msgstr "Sujet : %(name)s (%(kind)s)"
+
+#: exams/templates/subjects/show.html:25
+msgid "Comment"
+msgstr "Commentaires"
 
 #: home/templates/home/index.html:12
 msgid "This should display in your browser ACCEPTED-LANGUAGE."
@@ -187,15 +210,6 @@ msgstr "Français langue maternelle ?"
 #: students/models.py:21
 msgid "Has a third time ?"
 msgstr "Tiers temps ?"
-
-#: students/models.py:29 students/models.py:98
-msgid "Student"
-msgstr "Étudiant"
-
-#: students/models.py:100 students/models.py:107
-#: students/templates/students/show.html:37
-msgid "Mark"
-msgstr "Note"
 
 #: students/templates/students/index.html:5
 #, fuzzy

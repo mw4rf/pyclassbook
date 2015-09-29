@@ -111,4 +111,61 @@ class Subject(models.Model):
     @property
     def marks(self):
         return Mark.objects.filter(subject=self.id)
+        
+    @property
+    def count_marks(self):
+        return len(self.marks)
+    
+    @property
+    def marks_as_array(self):
+        marks = []
+        for m in self.marks:
+            marks.append(m.mark)
+        return marks
+        
+    @property
+    def average(self):
+        try:
+            res = statistics.mean(self.marks_as_array)
+            return float("{0:.2f}".format(res)) # round to 2 decimal points
+        except: #less than 2 marks : can't compute, exception thrown
+            return 0
+    
+    @property
+    def stddev(self):
+        try:
+            res = statistics.stdev(self.marks_as_array)
+            return float("{0:.2f}".format(res)) # round to 2 decimal points
+        except: #less than 2 marks : can't compute variance, exception thrown
+            return 0
+    
+    @property
+    def higher_mark(self):
+        try:
+            return max(self.marks_as_array)
+        except:
+            return 0
+            
+    @property
+    def lower_mark(self):
+        try:
+            return min(self.marks_as_array)
+        except:
+            return 0
+            
+    @property
+    def median(self):
+        try:
+            return statistics.median(self.marks_as_array)
+        except:
+            return 0
+            
+    @property
+    def variance(self):
+        try:
+            res = statistics.variance(self.marks_as_array)
+            return float("{0:.2f}".format(res)) # round to 2 decimal points
+        except:
+            return 0
+        
     

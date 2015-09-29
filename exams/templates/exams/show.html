@@ -22,6 +22,17 @@ Exam: {{ name }} ({{c}})
         {% for s in exam.subjects %}
             <li class="list-group-item">
                 <a href="{% url 'exams:subject' s.id %}">{{ s.kind }}</a>
+                <div class="pull-right">
+                    <span class="label label-default">
+                        {% trans "Marks Count"%} {{ s.count_marks }}
+                    </span>&nbsp;
+                    <span class="label label-default">
+                        {% trans "Average"%} {{ s.average }}
+                    </span>&nbsp;
+                    <span class="label label-default">
+                        {% trans "Std. Dev."%} {{ s.stddev }}
+                    </span>
+                </div>
             </li>
         {% endfor %}
       </ul>
@@ -42,13 +53,13 @@ Exam: {{ name }} ({{c}})
                 <th>{% trans "Lower Mark" %}</th>
             </tr>
             <tr>
-                <td>{{ exam.count_marks }}</td>
-                <td>{{ exam.average }}</td>
-                <td>{{ exam.stddev }}</td>
-                <td>{{ exam.median }}</td>
-                <td>{{ exam.variance }}</td>
-                <td>{{ exam.higher_mark }}</td>
-                <td>{{ exam.lower_mark }}</td>
+                <td><span class="badge">{{ exam.count_marks }}</span></td>
+                <td><span class="badge">{{ exam.average }}</span></td>
+                <td><span class="badge">{{ exam.stddev }}</span></td>
+                <td><span class="badge">{{ exam.median }}</span></td>
+                <td><span class="badge">{{ exam.variance }}</span></td>
+                <td><span class="badge">{{ exam.higher_mark }}</span></td>
+                <td><span class="badge">{{ exam.lower_mark }}</span></td>
             </tr>
         </table>
     </div>

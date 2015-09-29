@@ -30,6 +30,32 @@ Exam: {{ name }} ({{c}})
 
 <div class="container">
     <div class="panel panel-default">
+        <div class="panel-heading">{% trans "Statistics" %}</div>
+        <table class="table">
+            <tr>
+                <th>{% trans "Marks Count" %}</th>
+                <th>{% trans "Average" %}</th>
+                <th>{% trans "Std. Dev." %}</th>
+                <th>{% trans "Median" %}</th>
+                <th>{% trans "Variance" %}</th>
+                <th>{% trans "Higher Mark" %}</th>
+                <th>{% trans "Lower Mark" %}</th>
+            </tr>
+            <tr>
+                <td>{{ exam.count_marks }}</td>
+                <td>{{ exam.average }}</td>
+                <td>{{ exam.stddev }}</td>
+                <td>{{ exam.median }}</td>
+                <td>{{ exam.variance }}</td>
+                <td>{{ exam.higher_mark }}</td>
+                <td>{{ exam.lower_mark }}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default">
       <div class="panel-heading">{% trans "Marks" %}</div>
       <table class="table">
           <tr>

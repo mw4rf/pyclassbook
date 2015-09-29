@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load i18n %}
 {% load students_tags %}
 {% load marks_tags %}
 
@@ -19,17 +20,17 @@
       </div>
       <div class="panel-body">
           <p>
-              Moyenne : {{ student|average_for_course:course|colorize_mark }},
-              Écart-Type : {{ student|stddev_for_course:course|colorize_mark }},
-              Nombre de notes : {{ student|count_marks_for_course:course }}
+              {% trans "Average:" %} {{ student|average_for_course:course|colorize_mark }},
+              {% trans "Std. Dev.:" %} {{ student|stddev_for_course:course|colorize_mark }},
+              {% trans "Marks Count:" %} {{ student|count_marks_for_course:course }}
           </p>
       </div>
       <table class="table">
             <tr>
-                <th>Date</th>
-                <th>Note</th>
-                <th>Examen</th>
-                <th>Sujet</th>
+                <th>{% trans "Date" %}</th>
+                <th>{% trans "Mark" %}</th>
+                <th>{% trans "Exam" %}</th>
+                <th>{% trans "Subject" %}</th>
             </tr>
             {% for m in student|marks_for_course:course %}
             <tr>

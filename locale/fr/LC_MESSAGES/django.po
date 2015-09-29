@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-29 10:49+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: home/templates/home/index.html:12
+msgid "This should display in your browser ACCEPTED-LANGUAGE."
+msgstr "Ceci devrait s'afficher en français."
+
+#: pyclassbook/settings.py:103
+msgid "French"
+msgstr "Français"
+
+#: pyclassbook/settings.py:104
+msgid "English"
+msgstr "Anglais"
+
+#: students/templates/students/show.html:23
+msgid "Average:"
+msgstr "Moyenne :"
+
+#: students/templates/students/show.html:24
+msgid "Std. Dev.:"
+msgstr "Écart-Type :"
+
+#: students/templates/students/show.html:25
+msgid "Marks Count:"
+msgstr "Nombre de notes :"
+
+#: students/templates/students/show.html:30
+msgid "Date"
+msgstr "Date"
+
+#: students/templates/students/show.html:31
+msgid "Mark"
+msgstr "Note"
+
+#: students/templates/students/show.html:32
+msgid "Exam"
+msgstr "Examen"
+
+#: students/templates/students/show.html:33
+msgid "Subject"
+msgstr "Sujet"

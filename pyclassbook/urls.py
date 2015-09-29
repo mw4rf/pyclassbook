@@ -16,8 +16,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+from home import views as home
+
 urlpatterns = [
-    url(r'^$', include('home.urls', namespace='home')),
+    url(r'^$', home.index, name='home'),    
+    url(r'^home/$', include('home.urls', namespace='home')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^students/', include('students.urls', namespace='students')),
     url(r'^exams/', include('exams.urls', namespace='exams')),

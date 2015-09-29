@@ -1,7 +1,18 @@
 {% extends "base.html" %}
 
+{% load i18n %}
+
 {% block content %}
 
-pyClassbook!
+<div class="container">
+    
+    <div class="jumbotron">pyClassbook!</div>
+
+    <div class="alert alert-info">
+        {% trans "This should display in your browser ACCEPTED-LANGUAGE." %}
+        -- DEBUG: {{ LANGUAGE_CODE }}
+    </div>
+
+</div>
 
 {% endblock %}

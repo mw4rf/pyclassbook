@@ -51,7 +51,10 @@ class Student(models.Model):
         for m in Mark.objects.filter(student=self.id):
             index = index + 1
             marks = marks + m.mark
-        return marks / index
+        try:
+            return float("{0:.2f}".format(marks / index))
+        except ZeroDivisionError:
+            return 0
         
     def average_for_course(self, course):
         index = 0
@@ -61,7 +64,7 @@ class Student(models.Model):
                 marks = marks + m.mark
                 index = index + 1
         try:
-            return marks / index
+            return float("{0:.2f}".format(marks / index))
         except ZeroDivisionError:
             return 0
     
@@ -70,7 +73,8 @@ class Student(models.Model):
         for m in Mark.object.filter(student=self.id):
             mark.append(m.mark)
         try:
-            return statistics.stdev(marks)
+            res = statistics.stdev(marks)
+            return float("{0:.2f}".format(res)) # round to 2 decimal points
         except: #less than 2 marks : can't compute variance, exception thrown
             return 0
     
@@ -80,7 +84,8 @@ class Student(models.Model):
             if m.subject.exam.course == course:
                 marks.append(m.mark)
         try:
-            return statistics.stdev(marks)
+            res = statistics.stdev(marks)
+            return float("{0:.2f}".format(res)) # round to 2 decimal points
         except: #less than 2 marks : can't compute variance, exception thrown
             return 0
     

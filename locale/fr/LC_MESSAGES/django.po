@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 12:04+0200\n"
+"POT-Creation-Date: 2015-09-29 12:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: courses/models.py:11 exams/models.py:11
-#: students/templates/students/index.html:10
+#: courses/models.py:11 courses/templates/courses/index.html:10
+#: exams/models.py:11 students/templates/students/index.html:10
 msgid "Name"
 msgstr "Nom"
 
-#: courses/models.py:12
+#: courses/models.py:12 courses/templates/courses/index.html:12
 msgid "Level"
 msgstr "Niveau"
 
-#: courses/models.py:13 exams/models.py:15
+#: courses/models.py:13 courses/templates/courses/index.html:14
+#: exams/models.py:15
 msgid "Place"
 msgstr "Lieu"
 
-#: courses/models.py:14 exams/models.py:36
+#: courses/models.py:14 courses/templates/courses/index.html:13
+#: exams/models.py:36
 msgid "Kind"
 msgstr "Type"
 
@@ -50,6 +52,10 @@ msgstr "Date de fin"
 #: courses/models.py:23 exams/models.py:12
 msgid "Course"
 msgstr "Cours"
+
+#: courses/templates/courses/index.html:11
+msgid "Uni. Year"
+msgstr "Année univ."
 
 #: exams/models.py:13 students/templates/students/show.html:30
 msgid "Date"

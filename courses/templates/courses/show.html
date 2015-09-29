@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% load students_tags %}
 {% load marks_tags %}
+{% load courses_tags %}
 {% load i18n %}
+
+{% block title %}
+{% blocktrans trimmed with name=course.name year=course|course_years %}
+Course: {{ name }} ({{year}})
+{% endblocktrans %}
+{% endblock %}
 
 {% block content %}
     

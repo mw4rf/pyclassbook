@@ -4,6 +4,12 @@
 {% load students_tags %}
 {% load marks_tags %}
 
+{% block title %}
+{% blocktrans trimmed with name=student.fullname %}
+Student: {{ name }}
+{% endblocktrans %}
+{% endblock %}
+
 {% block content %}
     
     <div class="jumbotron">

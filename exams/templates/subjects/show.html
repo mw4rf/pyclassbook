@@ -1,4 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+{% blocktrans trimmed with name=subject.exam.name kind=subject.kind %}
+Subject: {{ name }} ({{kind}})
+{% endblocktrans %}
+{% endblock %}
 
 {% block content %}
     

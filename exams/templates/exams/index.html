@@ -1,6 +1,9 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block content %}
+
+{% block title %}{% trans "Exams List"  %}{% endblock %}
 
 <ul>
 {% for exam in exams %}

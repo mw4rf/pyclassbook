@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 12:08+0200\n"
+"POT-Creation-Date: 2015-09-29 14:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: courses/models.py:11 courses/templates/courses/index.html:10
-#: courses/templates/courses/show.html:19 exams/models.py:11
-#: students/templates/students/index.html:10
+#: courses/models.py:11 courses/templates/courses/index.html:12
+#: courses/templates/courses/show.html:26 exams/models.py:11
+#: students/templates/students/index.html:12
 msgid "Name"
 msgstr "Nom"
 
-#: courses/models.py:12 courses/templates/courses/index.html:12
+#: courses/models.py:12 courses/templates/courses/index.html:14
 msgid "Level"
 msgstr "Niveau"
 
-#: courses/models.py:13 courses/templates/courses/index.html:14
+#: courses/models.py:13 courses/templates/courses/index.html:16
 #: exams/models.py:15
 msgid "Place"
 msgstr "Lieu"
 
-#: courses/models.py:14 courses/templates/courses/index.html:13
+#: courses/models.py:14 courses/templates/courses/index.html:15
 #: exams/models.py:36
 msgid "Kind"
 msgstr "Type"
@@ -54,40 +54,51 @@ msgstr "Date de fin"
 msgid "Course"
 msgstr "Cours"
 
-#: courses/templates/courses/index.html:11
+#: courses/templates/courses/index.html:5
+#, fuzzy
+#| msgid "Courses"
+msgid "Courses List"
+msgstr "Cours"
+
+#: courses/templates/courses/index.html:13
 msgid "Uni. Year"
 msgstr "Année univ."
 
-#: courses/templates/courses/show.html:16 shared/templates/navbar.html:13
+#: courses/templates/courses/show.html:8
+#, python-format
+msgid "Course: %(name)s (%(year)s)"
+msgstr "Cours : %(name)s (%(year)s)"
+
+#: courses/templates/courses/show.html:23 shared/templates/navbar.html:13
 msgid "Students"
 msgstr "Étudiants"
 
-#: courses/templates/courses/show.html:20
+#: courses/templates/courses/show.html:27
 msgid "Average"
 msgstr "Moyenne"
 
-#: courses/templates/courses/show.html:21
+#: courses/templates/courses/show.html:28
 msgid "Std. Dev."
 msgstr "ÉcType"
 
-#: courses/templates/courses/show.html:22
+#: courses/templates/courses/show.html:29
 msgid "Marks count"
 msgstr "Nbr. Notes"
 
-#: courses/templates/courses/show.html:23 students/models.py:17
-#: students/templates/students/index.html:11
+#: courses/templates/courses/show.html:30 students/models.py:17
+#: students/templates/students/index.html:13
 msgid "e-mail"
 msgstr "E-Mail"
 
-#: courses/templates/courses/show.html:24
+#: courses/templates/courses/show.html:31
 msgid "Natv. Lang."
 msgstr "Lang. mater."
 
-#: courses/templates/courses/show.html:25
+#: courses/templates/courses/show.html:32
 msgid "3rd Time"
 msgstr "Tiers tps."
 
-#: exams/models.py:13 students/templates/students/show.html:30
+#: exams/models.py:13 students/templates/students/show.html:36
 msgid "Date"
 msgstr "Date"
 
@@ -96,7 +107,7 @@ msgid "Time Allowed"
 msgstr "Temps alloué"
 
 #: exams/models.py:22 exams/models.py:34
-#: students/templates/students/show.html:32
+#: students/templates/students/show.html:38
 msgid "Exam"
 msgstr "Examen"
 
@@ -105,9 +116,23 @@ msgid "Title"
 msgstr "Titre"
 
 #: exams/models.py:42 students/models.py:99
-#: students/templates/students/show.html:33
+#: students/templates/students/show.html:39
 msgid "Subject"
 msgstr "Sujet"
+
+#: exams/templates/exams/index.html:6
+msgid "Exams List"
+msgstr "Examens"
+
+#: exams/templates/exams/show.html:5
+#, python-format
+msgid "Exam: %(name)s (%(c)s)"
+msgstr "Examen : %(name)s (%(c)s)"
+
+#: exams/templates/subjects/show.html:5
+#, python-format
+msgid "Subject: %(name)s (%(kind)s)"
+msgstr "Sujet : %(name)s (%(kind)s)"
 
 #: home/templates/home/index.html:12
 msgid "This should display in your browser ACCEPTED-LANGUAGE."
@@ -122,7 +147,7 @@ msgid "English"
 msgstr "Anglais"
 
 #: shared/templates/navbar.html:16 students/models.py:26
-#: students/templates/students/index.html:12
+#: students/templates/students/index.html:14
 msgid "Courses"
 msgstr "Cours"
 
@@ -159,18 +184,30 @@ msgid "Student"
 msgstr "Étudiant"
 
 #: students/models.py:100 students/models.py:107
-#: students/templates/students/show.html:31
+#: students/templates/students/show.html:37
 msgid "Mark"
 msgstr "Note"
 
-#: students/templates/students/show.html:23
+#: students/templates/students/index.html:5
+#, fuzzy
+#| msgid "Students"
+msgid "Students List"
+msgstr "Étudiants"
+
+#: students/templates/students/show.html:8
+#, fuzzy, python-format
+#| msgid "Students"
+msgid "Student: %(name)s"
+msgstr "Étudiants : %(name)s"
+
+#: students/templates/students/show.html:29
 msgid "Average:"
 msgstr "Moyenne :"
 
-#: students/templates/students/show.html:24
+#: students/templates/students/show.html:30
 msgid "Std. Dev.:"
 msgstr "Écart Type :"
 
-#: students/templates/students/show.html:25
+#: students/templates/students/show.html:31
 msgid "Marks Count:"
 msgstr "Nombre de notes :"

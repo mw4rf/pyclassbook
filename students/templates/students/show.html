@@ -47,8 +47,8 @@ Student: {{ name }}
                     <td class="bg-danger">
                 {% endif %}
                     {{ m.mark|colorize_mark }}</td>
-                <td>{{ m.subject.exam.name }}</td>
-                <td>{{ m.subject.kind }}</td>
+                <td><a href="{% url 'exams:exam' m.subject.exam.id %}">{{ m.subject.exam.name }}</a></td>
+                <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
             </tr>
             {% endfor %}
       </table>

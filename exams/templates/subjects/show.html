@@ -26,7 +26,7 @@ Subject: {{ name }} ({{kind}})
               </tr>
               {% for mark in subject.marks %}
                   <tr>
-                      <td>{{ mark.student }}</td>
+                      <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
                       <td>{{ mark.mark }}</td>
                       <td>{{ mark.comment }}</td>
                   </tr>

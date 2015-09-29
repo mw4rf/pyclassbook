@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 12:05+0200\n"
+"POT-Creation-Date: 2015-09-29 12:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,7 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: courses/models.py:11 courses/templates/courses/index.html:10
-#: exams/models.py:11 students/templates/students/index.html:10
+#: courses/templates/courses/show.html:19 exams/models.py:11
+#: students/templates/students/index.html:10
 msgid "Name"
 msgstr "Nom"
 
@@ -57,6 +58,35 @@ msgstr "Cours"
 msgid "Uni. Year"
 msgstr "Année univ."
 
+#: courses/templates/courses/show.html:16 shared/templates/navbar.html:13
+msgid "Students"
+msgstr "Étudiants"
+
+#: courses/templates/courses/show.html:20
+msgid "Average"
+msgstr "Moyenne"
+
+#: courses/templates/courses/show.html:21
+msgid "Std. Dev."
+msgstr "ÉcType"
+
+#: courses/templates/courses/show.html:22
+msgid "Marks count"
+msgstr "Nbr. Notes"
+
+#: courses/templates/courses/show.html:23 students/models.py:17
+#: students/templates/students/index.html:11
+msgid "e-mail"
+msgstr "E-Mail"
+
+#: courses/templates/courses/show.html:24
+msgid "Natv. Lang."
+msgstr "Lang. mater."
+
+#: courses/templates/courses/show.html:25
+msgid "3rd Time"
+msgstr "Tiers tps."
+
 #: exams/models.py:13 students/templates/students/show.html:30
 msgid "Date"
 msgstr "Date"
@@ -91,10 +121,6 @@ msgstr "Français"
 msgid "English"
 msgstr "Anglais"
 
-#: shared/templates/navbar.html:13
-msgid "Students"
-msgstr "Étudiants"
-
 #: shared/templates/navbar.html:16 students/models.py:26
 #: students/templates/students/index.html:12
 msgid "Courses"
@@ -111,10 +137,6 @@ msgstr "Prénom"
 #: students/models.py:16
 msgid "lastname"
 msgstr "Nom de famille"
-
-#: students/models.py:17 students/templates/students/index.html:11
-msgid "e-mail"
-msgstr "E-Mail"
 
 #: students/models.py:18
 msgid "Alternative e-mail"

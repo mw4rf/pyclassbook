@@ -16,7 +16,7 @@ class Student(models.Model):
     lastname    = models.CharField(max_length = 100, verbose_name=_('lastname'))
     email       = models.EmailField(max_length = 254, verbose_name=_('e-mail'))
     email_alt   = models.EmailField(max_length = 254, blank=True, verbose_name=_('Alternative e-mail'))
-    birth       = models.DateField(null=True, verbose_name='Birth date')
+    birth       = models.DateField(null=True, verbose_name=_('Birth date'))
     native_lang = models.BooleanField(default=True, verbose_name=_('Native language ?'))
     third_time  = models.BooleanField(default=False, verbose_name=_('Has a third time ?'))
     # Auto
@@ -24,6 +24,9 @@ class Student(models.Model):
     updated_at  = models.DateTimeField(auto_now=True)
     # Relations
     courses     = models.ManyToManyField(Course, verbose_name=_('Courses'))
+    
+    class Meta:
+        verbose_name = _('Student')
     
     def __str__(self):
         return self.fullname()
@@ -92,13 +95,16 @@ class Mark(models.Model):
     # UUID
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # Fields
-    student     = models.ForeignKey(Student)
-    subject     = models.ForeignKey('exams.Subject')
-    mark        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(20)])
-    comment     = models.TextField(blank=True)
+    student     = models.ForeignKey(Student, verbose_name=_('Student'))
+    subject     = models.ForeignKey('exams.Subject', verbose_name=_('Subject'))
+    mark        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(20)], verbose_name=_('Mark'))
+    comment     = models.TextField(blank=True, verbose_name=_('Comments'))
     # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = _('Mark')
     
     def __str__(self):
         return str(self.mark) + " - " + str(self.student)

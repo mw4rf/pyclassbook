@@ -18,6 +18,9 @@ class Exam(models.Model):
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
     
+    class Meta:
+        verbose_name = _('Exam')
+        
     def __str__(self):
         return self.name + " (" + str(self.course) + ")"
         
@@ -34,6 +37,9 @@ class Subject(models.Model):
     # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        verbose_name = _('Subject')
     
     def __str__(self):
         return str(self.exam) + "(" + self.kind + ")"

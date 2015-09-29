@@ -93,10 +93,11 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 #LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "fr"
 
-#LOCALE_PATHS = [
-#    os.path.join(BASE_DIR, 'locale/'),
-#]
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale/'),
+]
 
 from django.utils.translation import ugettext_lazy as _
 LANGUAGES = [

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 11:39+0200\n"
+"POT-Creation-Date: 2015-09-29 11:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,63 +20,69 @@ msgstr ""
 
 #: courses/models.py:11 exams/models.py:11
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: courses/models.py:12
 msgid "Level"
-msgstr ""
+msgstr "Niveau"
 
 #: courses/models.py:13 exams/models.py:15
 msgid "Place"
-msgstr ""
+msgstr "Lieu"
 
-#: courses/models.py:14 exams/models.py:33
+#: courses/models.py:14 exams/models.py:36
 msgid "Kind"
-msgstr ""
+msgstr "Type"
 
-#: courses/models.py:15 exams/models.py:16
+#: courses/models.py:15 exams/models.py:16 students/models.py:101
 msgid "Comments"
-msgstr ""
+msgstr "Commentaires"
 
 #: courses/models.py:16
 msgid "Start date"
-msgstr ""
+msgstr "Date de début"
 
 #: courses/models.py:17
 msgid "End date"
-msgstr ""
+msgstr "Date de fin"
 
-#: exams/models.py:12
+#: courses/models.py:23 exams/models.py:12
 msgid "Course"
-msgstr ""
+msgstr "Cours"
 
 #: exams/models.py:13 students/templates/students/show.html:30
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #: exams/models.py:14
 msgid "Time Allowed"
-msgstr ""
+msgstr "Temps alloué"
 
-#: exams/models.py:31 students/templates/students/show.html:32
+#: exams/models.py:22 exams/models.py:34
+#: students/templates/students/show.html:32
 msgid "Exam"
-msgstr ""
+msgstr "Examen"
 
-#: exams/models.py:32
+#: exams/models.py:35
 msgid "Title"
-msgstr ""
+msgstr "Titre"
+
+#: exams/models.py:42 students/models.py:99
+#: students/templates/students/show.html:33
+msgid "Subject"
+msgstr "Sujet"
 
 #: home/templates/home/index.html:12
 msgid "This should display in your browser ACCEPTED-LANGUAGE."
 msgstr "Ce message devrait s'afficher en français."
 
-#: pyclassbook/settings.py:103
-msgid "French"
-msgstr ""
-
 #: pyclassbook/settings.py:104
+msgid "French"
+msgstr "Français"
+
+#: pyclassbook/settings.py:105
 msgid "English"
-msgstr ""
+msgstr "Anglais"
 
 #: students/models.py:15
 msgid "firstname"
@@ -84,44 +90,49 @@ msgstr "Prénom"
 
 #: students/models.py:16
 msgid "lastname"
-msgstr ""
+msgstr "Nom de famille"
 
 #: students/models.py:17
 msgid "e-mail"
-msgstr ""
+msgstr "E-Mail"
 
 #: students/models.py:18
 msgid "Alternative e-mail"
-msgstr ""
+msgstr "E-Mail alternatif"
+
+#: students/models.py:19
+msgid "Birth date"
+msgstr "Date de naissance"
 
 #: students/models.py:20
 msgid "Native language ?"
-msgstr ""
+msgstr "Français langue maternelle ?"
 
 #: students/models.py:21
 msgid "Has a third time ?"
-msgstr ""
+msgstr "Tiers temps ?"
 
 #: students/models.py:26
 msgid "Courses"
-msgstr ""
+msgstr "Cours"
+
+#: students/models.py:29 students/models.py:98
+msgid "Student"
+msgstr "Étudiant"
+
+#: students/models.py:100 students/models.py:107
+#: students/templates/students/show.html:31
+msgid "Mark"
+msgstr "Note"
 
 #: students/templates/students/show.html:23
 msgid "Average:"
-msgstr ""
+msgstr "Moyenne :"
 
 #: students/templates/students/show.html:24
 msgid "Std. Dev.:"
-msgstr ""
+msgstr "Écart Type :"
 
 #: students/templates/students/show.html:25
 msgid "Marks Count:"
-msgstr ""
-
-#: students/templates/students/show.html:31
-msgid "Mark"
-msgstr ""
-
-#: students/templates/students/show.html:33
-msgid "Subject"
-msgstr ""
+msgstr "Nombre de notes :"

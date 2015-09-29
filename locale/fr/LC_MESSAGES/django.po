@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 11:59+0200\n"
+"POT-Creation-Date: 2015-09-29 12:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -84,6 +84,18 @@ msgstr "Français"
 msgid "English"
 msgstr "Anglais"
 
+#: shared/templates/navbar.html:13
+msgid "Students"
+msgstr "Étudiants"
+
+#: shared/templates/navbar.html:16 students/models.py:26
+msgid "Courses"
+msgstr "Cours"
+
+#: shared/templates/navbar.html:21
+msgid "Admin"
+msgstr "Administration"
+
 #: students/models.py:15
 msgid "firstname"
 msgstr "Prénom"
@@ -111,10 +123,6 @@ msgstr "Français langue maternelle ?"
 #: students/models.py:21
 msgid "Has a third time ?"
 msgstr "Tiers temps ?"
-
-#: students/models.py:26
-msgid "Courses"
-msgstr "Cours"
 
 #: students/models.py:29 students/models.py:98
 msgid "Student"

@@ -2,6 +2,7 @@
 {% load students_tags %}
 {% load marks_tags %}
 {% load courses_tags %}
+{% load boolean_tags %}
 {% load i18n %}
 
 {% block title %}
@@ -38,8 +39,8 @@ Course: {{ name }} ({{year}})
               <td>{{ student|stddev_for_course:course }}</td>
               <td>{{ student|count_marks_for_course:course }}</td>
               <td><a href="mailto:{{s.email}}">{{ student.email }}</a></td>
-              <td>{{ student.native_lang }}</td>
-              <td>{{ student.third_time }}</td>
+              <td>{{ student.native_lang|bool_as_icon }}</td>
+              <td>{{ student.third_time|bool_as_icon }}</td>
           </tr>
           {% endfor %}
       </table>

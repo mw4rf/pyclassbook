@@ -28,7 +28,12 @@ Subject: {{ name }} ({{kind}})
               {% for mark in subject.marks %}
                   <tr>
                       <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
-                      <td>{{ mark.mark|colorize_mark }}</td>
+                      {% if mark.mark >= 10 %}
+                          <td class="bg-success">
+                      {% else %}
+                          <td class="bg-danger">
+                      {% endif %}
+                          {{ mark.mark|colorize_mark }}</td>
                       <td>{{ mark.comment }}</td>
                   </tr>
               {% endfor %}

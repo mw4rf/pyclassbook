@@ -78,7 +78,12 @@ Exam: {{ name }} ({{c}})
           {% for mark in exam.marks %}
               <tr>
                   <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
-                  <td>{{ mark.mark|colorize_mark }}</td>
+                  {% if mark.mark >= 10 %}
+                      <td class="bg-success">
+                  {% else %}
+                      <td class="bg-danger">
+                  {% endif %}
+                      {{ mark.mark|colorize_mark }}</td>
                   <td><a href="{% url 'exams:subject' mark.subject.id %}">{{ mark.subject.kind }}</a></td>
               </tr>
           {% endfor %}

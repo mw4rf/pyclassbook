@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 10:49+0200\n"
+"POT-Creation-Date: 2015-09-29 11:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,34 @@ msgstr "Français"
 #: pyclassbook/settings.py:104
 msgid "English"
 msgstr "Anglais"
+
+#: students/models.py:15
+msgid "firstname"
+msgstr "Prénom"
+
+#: students/models.py:16
+msgid "lastname"
+msgstr "Nom de famille"
+
+#: students/models.py:17
+msgid "e-mail"
+msgstr "E-mail"
+
+#: students/models.py:18
+msgid "Alternative e-mail"
+msgstr "E-mail alternatif"
+
+#: students/models.py:20
+msgid "Native language ?"
+msgstr "Français langue maternelle ?"
+
+#: students/models.py:21
+msgid "Has a third time ?"
+msgstr "Tiers temps ?"
+
+#: students/models.py:26
+msgid "Courses"
+msgstr "Cours"
 
 #: students/templates/students/show.html:23
 msgid "Average:"

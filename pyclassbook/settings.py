@@ -94,7 +94,7 @@ DATABASES = {
 
 #LANGUAGE_CODE = 'en-us'
 
-LOCALE_PATH = [
+LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale/'),
 ]
 

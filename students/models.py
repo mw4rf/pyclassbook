@@ -1,6 +1,7 @@
 from django.db import models
 
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.translation import ugettext as _
 
 from courses.models import Course
 
@@ -11,18 +12,18 @@ class Student(models.Model):
     # UUID
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # Fields
-    firstname   = models.CharField(max_length = 100)
-    lastname    = models.CharField(max_length = 100)
-    email       = models.EmailField(max_length = 254)
-    email_alt   = models.EmailField(max_length = 254, blank=True)
-    birth       = models.DateField(null=True)
-    native_lang = models.BooleanField(default=True)
-    third_time  = models.BooleanField(default=False)
+    firstname   = models.CharField(max_length = 100, verbose_name=_('firstname'))
+    lastname    = models.CharField(max_length = 100, verbose_name=_('lastname'))
+    email       = models.EmailField(max_length = 254, verbose_name=_('e-mail'))
+    email_alt   = models.EmailField(max_length = 254, blank=True, verbose_name=_('Alternative e-mail'))
+    birth       = models.DateField(null=True, verbose_name='Birth date')
+    native_lang = models.BooleanField(default=True, verbose_name=_('Native language ?'))
+    third_time  = models.BooleanField(default=False, verbose_name=_('Has a third time ?'))
     # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)
     # Relations
-    courses     = models.ManyToManyField(Course)
+    courses     = models.ManyToManyField(Course, verbose_name=_('Courses'))
     
     def __str__(self):
         return self.fullname()

@@ -9,6 +9,7 @@
     <table class="table">
         <tr>
             <th>{% trans "Date" %}</th>
+            <th>{% trans "Exam" %}</th>
             <th>{% trans "Course" %}</th>
             <th>{% trans "Time Allowed" %}</th>
             <th>{% trans "Place" %}</th>
@@ -16,7 +17,8 @@
     {% for exam in exams %}
         <tr>
             <td>{{ exam.date }}</td>
-            <td><a href="{% url 'exams:exam' exam.id %}">{{ exam }}</a></td>
+            <td><a href="{% url 'exams:exam' exam.id %}">{{ exam.name }}</a></td>
+            <td><a href="{% url 'courses:show' exam.course.id %}">{{ exam.course.name }}</a></td>
             <td>{{ exam.time_allowed }} {% trans "hour(s)" %}</td>
             <td>{{ exam.place }}</td>
         </tr>

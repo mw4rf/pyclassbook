@@ -68,7 +68,7 @@ class Student(models.Model):
     def stddev(self):
         marks = []
         for m in Mark.object.filter(student=self.id):
-            mark.add(m.mark)
+            mark.append(m.mark)
         try:
             return statistics.stdev(marks)
         except: #less than 2 marks : can't compute variance, exception thrown
@@ -78,7 +78,7 @@ class Student(models.Model):
         marks = []
         for m in Mark.objects.filter(student=self.id):
             if m.subject.exam.course == course:
-                marks.add(m.mark)
+                marks.append(m.mark)
         try:
             return statistics.stdev(marks)
         except: #less than 2 marks : can't compute variance, exception thrown

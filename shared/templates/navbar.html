@@ -19,6 +19,12 @@
                 </li>
              </ul>
              <ul class="nav navbar-nav navbar-right">
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans 'Full Lists' %}<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                     <li><a href="{% url 'students:index_full' %}">{% trans 'Students' %}</a></li>
+                    </ul>
+                 </li>
                  <li class="">
                      <a href="{% url 'admin:index' %}">{% trans 'Admin' %}</a>
                  </li>

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-29 22:24+0200\n"
+"POT-Creation-Date: 2015-09-30 09:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,6 +71,7 @@ msgid "Course: %(name)s (%(year)s)"
 msgstr "Cours : %(name)s (%(year)s)"
 
 #: courses/templates/courses/show.html:24 shared/templates/navbar.html:12
+#: shared/templates/navbar.html.py:25
 msgid "Students"
 msgstr "Étudiants"
 
@@ -215,6 +216,10 @@ msgid "Exams"
 msgstr "Examens"
 
 #: shared/templates/navbar.html:23
+msgid "Full Lists"
+msgstr "Listes complètes"
+
+#: shared/templates/navbar.html:29
 msgid "Admin"
 msgstr "Administration"
 
@@ -248,10 +253,6 @@ msgstr "Tiers temps ?"
 #| msgid "Students"
 msgid "Students List"
 msgstr "Étudiants"
-
-#: students/templates/students/index.html:27
-msgid "Full list"
-msgstr "Liste complète"
 
 #: students/templates/students/show.html:8
 #, fuzzy, python-format

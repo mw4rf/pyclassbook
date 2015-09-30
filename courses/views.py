@@ -1,15 +1,18 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 from .models import Course
 from students.models import Student
 
+@login_required
 def index_full(request):
     ''' List of courses. '''
     courses = Course.objects.order_by('created_at')
     context = {'courses': courses}
     return render(request, 'courses/index_full.html', context)
-    
+
+@login_required    
 def index(request):
     courses_list = Course.objects.order_by('start_date')
     paginator = Paginator(courses_list, 20) # Show 20 items per page
@@ -23,7 +26,8 @@ def index(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         courses = paginator.page(paginator.num_pages)
     return render(request, 'courses/index.html', {"courses": courses})
-    
+
+@login_required    
 def show(request, course_id):
     ''' Show a course details. '''
     try:

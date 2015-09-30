@@ -1,7 +1,5 @@
 from django.db import models
-
 from django.utils.translation import ugettext as _
-
 import uuid
 
 class Course(models.Model):
@@ -24,5 +22,10 @@ class Course(models.Model):
     
     def __str__(self):
         return self.name
+        
+    @property
+    def exams(self):
+        from exams.models import Exam
+        return Exam.objects.filter(course=self.id)
         
 

@@ -16,9 +16,40 @@ Course: {{ name }} ({{year}})
     <div class="jumbotron">
         <div class="container">
             <h1>{{ course.name }}</h1>
+            <h2>{{ course.place }}, {{ course|course_years }}, {{ course.kind }}</h2>
         </div>
     </div>
 
+<!-- Exams -->
+<div class="container">    
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2 class="panel-title">{% trans "Exams" %}</h2></div>
+      <table class="table">
+          <tr>
+              <th>{% trans 'Exam' %}</th>
+              <th>{% trans 'Date' %}</th>
+              <th>{% trans 'Subjects' %}</th>
+              <th>{% trans 'Marks' %}</th>
+              <th>{% trans 'Average' %}</th>
+              <th>{% trans 'Std. Dev.' %}</th>
+              <th>{% trans 'Median' %}</th>
+          </tr>
+          {% for exam in course.exams %}
+          <tr>
+              <td><a href="{% url 'exams:exam' exam.id %}">{{ exam.name }}</a></td>
+              <td>{{ exam.date }}</td>
+              <td>{{ exam.count_subjects }}</td>
+              <td>{{ exam.count_marks }}</td>
+              <td>{{ exam.average }}</td>
+              <td>{{ exam.stddev }}</td>
+              <td>{{ exam.median }}</td>
+          </tr>
+          {% endfor %}
+      </table>
+    </div>
+</div>
+
+<!-- Students -->
 <div class="container">    
     <div class="panel panel-default">
       <div class="panel-heading"><h2 class="panel-title">{% trans "Students" %}</h2></div>

@@ -31,6 +31,10 @@ class Exam(models.Model):
     def subjects(self):
         return Subject.objects.filter(exam=self.id)
     
+    @property
+    def count_subjects(self):
+        return len(self.subjects)
+    
     @property    
     def marks(self):
         return Mark.objects.filter(subject__in=self.subjects)

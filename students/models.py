@@ -36,8 +36,7 @@ class Student(models.Model):
         return self.firstname + " " + self.lastname
     
     def marks(self):
-        m = Mark.objects.filter(student=self.id)
-        return m
+        return Mark.objects.filter(student=self.id)
     
     def marks_for_course(self, course):
         marks = []

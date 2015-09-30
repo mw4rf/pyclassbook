@@ -19,6 +19,7 @@ class Student(models.Model):
     birth       = models.DateField(null=True, verbose_name=_('Birth date'))
     native_lang = models.BooleanField(default=True, verbose_name=_('Native language ?'))
     third_time  = models.BooleanField(default=False, verbose_name=_('Has a third time ?'))
+    comments    = models.TextField(blank=True, default='', verbose_name=_('Comments'))
     # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)

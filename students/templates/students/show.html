@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load students_tags %}
 {% load marks_tags %}
+{% load courses_tags %}
 
 {% block title %}
 {% blocktrans trimmed with name=student.fullname %}
@@ -18,11 +19,29 @@ Student: {{ name }}
         </div>
     </div>
 
+<!-- Comments -->
+{% if student.comments %}
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2 class="panel-title">{% trans 'Comments' %}</h2>
+        </div>
+        <div class="panel-body">
+            {{ student.comments }}
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Courses List -->
 <div class="container"> 
     {% for course in student.courses.all %}
     <div class="panel panel-default">
       <div class="panel-heading">
-          <h3>{{ course.name }}</h3>
+          <h2 class="panel-title">
+              <a href="{% url 'courses:show' course.id %}">{{ course.name }}</a>&nbsp;
+              ({{ course.place }}, {{ course|course_years }})
+          </h2>
       </div>
       <div class="panel-body">
           <p>

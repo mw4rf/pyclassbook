@@ -25,7 +25,7 @@ class Exam(models.Model):
         verbose_name = _('Exam')
         
     def __str__(self):
-        return self.name + " (" + str(self.course) + ")"
+        return self.name
     
     @property    
     def subjects(self):

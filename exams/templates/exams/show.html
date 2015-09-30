@@ -13,6 +13,12 @@ Exam: {{ name }} ({{c}})
 <div class="jumbotron">
     <div class="container">
         <h1>{{ exam }}</h1>
+        <h2>
+            <a href="{% url 'courses:show' exam.course.id %}">{{ exam.course }}</a> 
+        </h2>
+        <h3>
+            {{ exam.date }}, {{ exam.place }}, {{ exam.time_allowed }} {% trans 'hour(s)' %}
+        </h3>
     </div>
 </div>
 

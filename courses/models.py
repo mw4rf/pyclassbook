@@ -22,7 +22,11 @@ class Course(models.Model):
     
     def __str__(self):
         return self.name
-        
+    
+    @property
+    def fullname(self):
+        return "%s, %s, %s-%s" % (self.name, self.place, self.start_date.year, self.end_date.year)
+    
     @property
     def exams(self):
         from exams.models import Exam

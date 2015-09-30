@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load courses_tags %}
+{% load i18n %}
+
+{% block title %}{% trans "Courses List"  %}{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>{% trans "Name" %}</th>
+            <th>{% trans "Uni. Year" %}</th>
+            <th>{% trans "Level" %}</th>
+            <th>{% trans "Kind" %}</th>
+            <th>{% trans "Place" %}</th>
+        </tr>
+        {% for c in courses %}
+        <tr>
+            <td><a href="{% url 'courses:show' c.id %}">{{ c.name }}</a></td>
+            <td>{{ c|course_years }}</td>
+            <td>{{ c.level }}</td>
+            <td>{{ c.kind }}</td>
+            <td>{{ c.place }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% include "paginate.html" with items=courses %}
+{% endblock %}

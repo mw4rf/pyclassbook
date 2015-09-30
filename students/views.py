@@ -14,7 +14,6 @@ def index_full(request):
 def index(request):
     students_list = Student.objects.order_by('lastname')
     paginator = Paginator(students_list, 100) # Show 100 items per page
-
     page = request.GET.get('page')
     try:
         students = paginator.page(page)

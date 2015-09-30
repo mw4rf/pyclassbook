@@ -18,7 +18,7 @@ Exam: {{ name }} ({{c}})
 
 <div class="container">    
     <div class="panel panel-default">
-      <div class="panel-heading">{% trans "Subjects" %}</div>
+      <div class="panel-heading"><h2 class="panel-title">{% trans "Subjects" %}</h2></div>
       <ul class="list-group">
         {% for s in exam.subjects %}
             <li class="list-group-item">
@@ -42,7 +42,7 @@ Exam: {{ name }} ({{c}})
 
 <div class="container">
     <div class="panel panel-default">
-        <div class="panel-heading">{% trans "Statistics" %}</div>
+        <div class="panel-heading"><h2 class="panel-title">{% trans "Statistics" %}</h2></div>
         <table class="table">
             <tr>
                 <th>{% trans "Marks Count" %}</th>
@@ -68,7 +68,7 @@ Exam: {{ name }} ({{c}})
 
 <div class="container">
     <div class="panel panel-default">
-      <div class="panel-heading">{% trans "Marks" %}</div>
+      <div class="panel-heading"><h2 class="panel-title">{% trans "Marks" %}</h2></div>
       <table class="table">
           <tr>
               <th>{% trans "Student" %}</th>

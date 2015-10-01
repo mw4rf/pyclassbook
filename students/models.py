@@ -86,12 +86,12 @@ class Student(models.Model):
 
     @property
     def marks_progression(self):
-        marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
+        from django.utils import formats
+        marks = Mark.objects.filter(student=self.id).order_by('-subject__exam__date')
         stats = {}
-        count = 0
         for mark in marks:
-            stats[count] = mark.mark
-            count = count + 1
+            date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
+            stats[date] = mark.mark
         return stats
 
     # Fields label in admin area (only for methods)

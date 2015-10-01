@@ -4,7 +4,7 @@
 <script type="text/javascript">
 $( document ).ready(function() {
     var data = {
-        labels: {{ student.marks_progression|list_keys }},
+        labels: {{ student.marks_progression|list_keys|safe }},
         datasets: [
             {
                 label: "{% trans 'Marks progression' %}",
@@ -28,7 +28,9 @@ $( document ).ready(function() {
         scaleOverride : true,
         scaleSteps : 20,
         scaleStepWidth : 1,
-        scaleStartValue : 0 
+        scaleStartValue : 0,
+        // Tooltip 
+        tooltipTemplate: "<%= value %>",
     });
 });
 </script>

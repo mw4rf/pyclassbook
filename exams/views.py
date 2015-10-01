@@ -14,7 +14,11 @@ def index_full(request):
 
 @login_required
 def index(request):
-    exams_list = Exam.objects.order_by('date')
+    # Sorting
+    order_by = request.GET.get('order_by', 'date')
+    # Requesting
+    exams_list = Exam.objects.order_by(order_by)
+    # Paginating
     paginator = Paginator(exams_list, 20) # Show 20 items per page
     page = request.GET.get('page')
     try:

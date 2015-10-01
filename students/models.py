@@ -31,7 +31,7 @@ class Student(models.Model):
     
     def __str__(self):
         return self.fullname()
-        
+    
     def fullname(self):
         return self.firstname + " " + self.lastname
     
@@ -69,9 +69,7 @@ class Student(models.Model):
             return 0
     
     def stddev(self):
-        marks = []
-        for m in Mark.object.filter(student=self.id):
-            mark.append(m.mark)
+        marks = self.marks
         try:
             res = statistics.stdev(marks)
             return float("{0:.2f}".format(res)) # round to 2 decimal points
@@ -79,16 +77,23 @@ class Student(models.Model):
             return 0
     
     def stddev_for_course(self, course):
-        marks = []
-        for m in Mark.objects.filter(student=self.id):
-            if m.subject.exam.course == course:
-                marks.append(m.mark)
+        marks = self.marks_for_course(course)
         try:
             res = statistics.stdev(marks)
             return float("{0:.2f}".format(res)) # round to 2 decimal points
         except: #less than 2 marks : can't compute variance, exception thrown
             return 0
-    
+
+    @property
+    def marks_progression(self):
+        marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
+        stats = {}
+        count = 0
+        for mark in marks:
+            stats[count] = mark.mark
+            count = count + 1
+        return stats
+
     # Fields label in admin area (only for methods)
     fullname.short_description = "Name"
     

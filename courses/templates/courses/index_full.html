@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load courses_tags %}
+{% load table_tags %}
 {% load i18n %}
 
 {% block title %}{% trans "Courses List"  %}{% endblock %}
@@ -10,11 +11,11 @@
     <table class="table">
         <thead>
         <tr>
-            <th>{% trans "Name" %}</th>
-            <th>{% trans "Uni. Year" %}</th>
-            <th>{% trans "Level" %}</th>
-            <th>{% trans "Kind" %}</th>
-            <th>{% trans "Place" %}</th>
+            <th><a href="?{% sort_row request 'order_by' 'name' %}">{% trans "Name" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'start_date' %}">{% trans "Uni. Year" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'level' %}">{% trans "Level" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'kind' %}">{% trans "Kind" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'place' %}">{% trans "Place" %}</a></th>
         </tr>
         </thead>
         <tbody>

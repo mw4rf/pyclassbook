@@ -8,7 +8,10 @@ from .models import Exam, Subject
 @login_required
 def index_full(request):
     ''' List of exams. '''
-    exams = Exam.objects.order_by('date')
+    # Sorting
+    order_by = request.GET.get('order_by', 'date')
+    # Requesting
+    exams = Exam.objects.all().order_by(order_by)
     context = {'exams': exams}
     return render(request, 'exams/index_full.html', context)
 
@@ -17,7 +20,7 @@ def index(request):
     # Sorting
     order_by = request.GET.get('order_by', 'date')
     # Requesting
-    exams_list = Exam.objects.order_by(order_by)
+    exams_list = Exam.objects.all().order_by(order_by)
     # Paginating
     paginator = Paginator(exams_list, 20) # Show 20 items per page
     page = request.GET.get('page')

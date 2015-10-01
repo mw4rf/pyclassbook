@@ -8,7 +8,10 @@ from students.models import Student
 @login_required
 def index_full(request):
     ''' List of courses. '''
-    courses = Course.objects.order_by('created_at')
+    # Sorting
+    order_by = request.GET.get('order_by', 'start_date')
+    # Requesting
+    courses = Course.objects.all().order_by(order_by)
     context = {'courses': courses}
     return render(request, 'courses/index_full.html', context)
 
@@ -17,7 +20,7 @@ def index(request):
     # Sorting
     order_by = request.GET.get('order_by', 'start_date')
     # Requesting
-    courses_list = Course.objects.order_by(order_by)
+    courses_list = Course.objects.all().order_by(order_by)
     # Paginating
     paginator = Paginator(courses_list, 20) # Show 20 items per page
     page = request.GET.get('page')

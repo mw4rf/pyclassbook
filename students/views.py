@@ -9,7 +9,10 @@ from .models import Student
 @login_required
 def index_full(request):
     ''' List of students. '''
-    students = Student.objects.order_by('created_at')
+    # Sorting
+    order_by = request.GET.get('order_by', 'lastname')
+    # Requesting
+    students = Student.objects.all().order_by(order_by)
     context = {'students': students}
     return render(request, 'students/index_full.html', context)
 

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load table_tags %}
 {% load i18n %}
 
 {% block title %}{% trans "Exams List"  %}{% endblock %}
@@ -9,11 +10,11 @@
     <table class="table">
         <thead>
         <tr>
-            <th>{% trans "Date" %}</th>
-            <th>{% trans "Exam" %}</th>
-            <th>{% trans "Course" %}</th>
-            <th>{% trans "Time Allowed" %}</th>
-            <th>{% trans "Place" %}</th>
+            <th><a href="?{% sort_row request 'order_by' 'date' %}">{% trans "Date" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'name' %}">{% trans "Exam" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'course__name' %}">{% trans "Course" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'time_allowed' %}">{% trans "Time Allowed" %}</a></th>
+            <th><a href="?{% sort_row request 'order_by' 'place' %}">{% trans "Place" %}</a></th>
         </tr>
         </thead>
         <tbody>

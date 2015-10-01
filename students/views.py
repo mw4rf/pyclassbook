@@ -15,7 +15,11 @@ def index_full(request):
 
 @login_required
 def index(request):
-    students_list = Student.objects.order_by('lastname')
+    # Sorting
+    order_by = request.GET.get('order_by', 'lastname')
+    # Requesting
+    students_list = Student.objects.all().order_by(order_by)
+    # Paginating
     paginator = Paginator(students_list, 100) # Show 100 items per page
     page = request.GET.get('page')
     try:

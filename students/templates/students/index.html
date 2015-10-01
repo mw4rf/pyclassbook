@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load students_tags %}
+{% load table_tags %}
 {% load i18n %}
 
 {% block title %}{% trans "Students List"  %}{% endblock %}
@@ -9,7 +10,7 @@
 <div class="container">
     <table class="table">
         <tr>
-            <th>{% trans "Name" %}</th>
+            <th><a href="?{% sort_row request 'order_by' 'lastname' %}">{% trans "Name" %}</a></th>
             <th>{% trans "e-mail" %}</th>
             <th>{% trans "Courses" %}</th>
         </tr>

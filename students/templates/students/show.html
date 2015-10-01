@@ -51,12 +51,15 @@ Student: {{ name }}
           </p>
       </div>
       <table class="table">
+            <thead>
             <tr>
                 <th>{% trans "Date" %}</th>
                 <th>{% trans "Mark" %}</th>
                 <th>{% trans "Exam" %}</th>
                 <th>{% trans "Subject" %}</th>
             </tr>
+            </thead>
+            <tbody>
             {% for m in student|marks_for_course:course %}
             <tr>
                 <td>{{ m.subject.exam.date }}</td>
@@ -70,6 +73,7 @@ Student: {{ name }}
                 <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
             </tr>
             {% endfor %}
+            </tbody>
       </table>
     </div>
     {% endfor %}

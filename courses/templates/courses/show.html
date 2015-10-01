@@ -25,6 +25,7 @@ Course: {{ name }} ({{year}})
     <div class="panel panel-default">
       <div class="panel-heading"><h2 class="panel-title">{% trans "Exams" %}</h2></div>
       <table class="table">
+          <thead>
           <tr>
               <th>{% trans 'Exam' %}</th>
               <th>{% trans 'Date' %}</th>
@@ -34,6 +35,8 @@ Course: {{ name }} ({{year}})
               <th>{% trans 'Std. Dev.' %}</th>
               <th>{% trans 'Median' %}</th>
           </tr>
+          </thead>
+          <tbody>
           {% for exam in course.exams %}
           <tr>
               <td><a href="{% url 'exams:exam' exam.id %}">{{ exam.name }}</a></td>
@@ -45,6 +48,7 @@ Course: {{ name }} ({{year}})
               <td>{{ exam.median }}</td>
           </tr>
           {% endfor %}
+          </tbody>
       </table>
     </div>
 </div>
@@ -54,6 +58,7 @@ Course: {{ name }} ({{year}})
     <div class="panel panel-default">
       <div class="panel-heading"><h2 class="panel-title">{% trans "Students" %}</h2></div>
       <table class="table">
+          <thead>
           <tr>
               <th>{% trans "Name" %}</th>
               <th>{% trans "Average" %}</th>
@@ -63,6 +68,8 @@ Course: {{ name }} ({{year}})
               <th>{% trans "Natv. Lang." %}</th>
               <th>{% trans "3rd Time" %}</th>
           </tr>
+          </thead>
+          <tbody>
           {% for student in students %}
           <tr>
               <td><a href="{% url 'students:show' student.id %}">{{ student }}</a></td>
@@ -74,6 +81,7 @@ Course: {{ name }} ({{year}})
               <td>{{ student.third_time|bool_as_icon }}</td>
           </tr>
           {% endfor %}
+          </tbody>
       </table>
     </div>
 </div>

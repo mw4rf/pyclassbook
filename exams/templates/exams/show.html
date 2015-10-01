@@ -50,6 +50,7 @@ Exam: {{ name }} ({{c}})
     <div class="panel panel-default">
         <div class="panel-heading"><h2 class="panel-title">{% trans "Statistics" %}</h2></div>
         <table class="table">
+            <thead>
             <tr>
                 <th>{% trans "Marks Count" %}</th>
                 <th>{% trans "Average" %}</th>
@@ -59,6 +60,8 @@ Exam: {{ name }} ({{c}})
                 <th>{% trans "Higher Mark" %}</th>
                 <th>{% trans "Lower Mark" %}</th>
             </tr>
+            </thead>
+            <tbody>
             <tr>
                 <td><span class="badge">{{ exam.count_marks }}</span></td>
                 <td><span class="badge">{{ exam.average }}</span></td>
@@ -68,6 +71,7 @@ Exam: {{ name }} ({{c}})
                 <td><span class="badge">{{ exam.higher_mark }}</span></td>
                 <td><span class="badge">{{ exam.lower_mark }}</span></td>
             </tr>
+            </tbody>
         </table>
     </div>
 </div>
@@ -76,11 +80,14 @@ Exam: {{ name }} ({{c}})
     <div class="panel panel-default">
       <div class="panel-heading"><h2 class="panel-title">{% trans "Marks" %}</h2></div>
       <table class="table">
+          <thead>
           <tr>
               <th>{% trans "Student" %}</th>
               <th>{% trans "Mark" %}</th>
               <th>{% trans "Subject" %}</th>
           </tr>
+          </thead>
+          <tbody>
           {% for mark in exam.marks %}
               <tr>
                   <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
@@ -93,6 +100,7 @@ Exam: {{ name }} ({{c}})
                   <td><a href="{% url 'exams:subject' mark.subject.id %}">{{ mark.subject.kind }}</a></td>
               </tr>
           {% endfor %}
+          </tbody>
       </table>
 </div>
 

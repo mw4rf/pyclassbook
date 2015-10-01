@@ -8,11 +8,14 @@
 
 <div class="container">
     <table class="table">
+        <thead>
         <tr>
             <th>{% trans "Name" %}</th>
             <th>{% trans "e-mail" %}</th>
             <th>{% trans "Courses" %}</th>
         </tr>
+        </thead>
+        <tbody>
         {% for s in students %}
         <tr>
             <td><a href="{% url 'students:show' s.id %}">{{ s.fullname }}</a></td>
@@ -20,6 +23,7 @@
             <td><span style="display: inline-block;">{{ s.courses.all|courses_for_student }}</span></td>
         </tr>
         {% endfor %}
+        </tbody>
     </table>
 </div>
 

@@ -30,11 +30,14 @@ Subject: {{ name }} ({{kind}})
     <div class="panel panel-default">
       <div class="panel-heading"><h2 class="panel-title">{% trans "Marks" %}</h2></div>
       <table class="table">
+          <thead>
           <tr>
               <th>{% trans "Student" %}</th>
               <th>{% trans "Mark" %}</th>
               <th>{% trans "Comment" %}</th>
           </tr>
+          </thead>
+          <tbody>
           {% for mark in subject.marks %}
               <tr>
                   <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
@@ -47,6 +50,7 @@ Subject: {{ name }} ({{kind}})
                   <td>{{ mark.comment }}</td>
               </tr>
           {% endfor %}
+          </tbody>
       </table>
 </div>
 

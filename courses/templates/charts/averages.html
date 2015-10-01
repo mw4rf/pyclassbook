@@ -4,21 +4,21 @@
 <script type="text/javascript">
 $( document ).ready(function() {
     var data = {
-        labels: {{ exam.count_marks_occurrences|list_keys }},
+        labels: {{ course.count_averages_occurrences|list_keys }},
         datasets: [
             {
-                label: "{% trans 'Marks distribution' %}",
+                label: "{% trans 'Averages distribution' %}",
                 fillColor: "rgba(151,187,205,0.2)",
                 strokeColor: "rgba(151,187,205,1)",
                 pointColor: "rgba(151,187,205,1)",
                 pointStrokeColor: "#fff",
                 pointHighlightFill: "#fff",
                 pointHighlightStroke: "rgba(220,220,220,1)",
-                data: {{ exam.count_marks_occurrences|list_values }}
+                data: {{ course.count_averages_occurrences|list_values }}
             }
         ]
     };
-    var ctx = document.getElementById("marksChart").getContext("2d");
+    var ctx = document.getElementById("averagesChart").getContext("2d");
     var myLineChart = new Chart(ctx).Line(data, {
         // Boolean - whether or not the chart should be responsive and resize when the browser does.
         responsive: true,
@@ -28,4 +28,4 @@ $( document ).ready(function() {
 });
 </script>
 
-<canvas id="marksChart" class="img-responsive" height="300"></canvas>
+<canvas id="averagesChart" class="img-responsive" height="300"></canvas>

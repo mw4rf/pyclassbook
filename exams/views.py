@@ -10,7 +10,7 @@ def index_full(request):
     ''' List of exams. '''
     exams = Exam.objects.order_by('date')
     context = {'exams': exams}
-    return render(request, 'exams/index.html', context)
+    return render(request, 'exams/index_full.html', context)
 
 @login_required
 def index(request):

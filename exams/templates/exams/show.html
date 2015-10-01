@@ -22,6 +22,7 @@ Exam: {{ name }} ({{c}})
     </div>
 </div>
 
+<!-- Subjects -->
 <div class="container">    
     <div class="panel panel-default">
       <div class="panel-heading"><h2 class="panel-title">{% trans "Subjects" %}</h2></div>
@@ -46,6 +47,7 @@ Exam: {{ name }} ({{c}})
     </div>
 </div>
 
+<!-- Stats -->
 <div class="container">
     <div class="panel panel-default">
         <div class="panel-heading"><h2 class="panel-title">{% trans "Statistics" %}</h2></div>
@@ -76,6 +78,17 @@ Exam: {{ name }} ({{c}})
     </div>
 </div>
 
+<!-- Charts -->
+<div class="container">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h2 class="panel-title">{% trans "Marks" %}</h2></div>
+      <div class="panel-body">
+          {% include 'charts/marks.html' %}
+      </div>
+    </div>
+</div>
+
+<!-- Marks -->
 <div class="container">
     <div class="panel panel-default">
       <div class="panel-heading"><h2 class="panel-title">{% trans "Marks" %}</h2></div>

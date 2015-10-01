@@ -51,3 +51,4 @@ def subject(request, subject_id):
     except Exam.DoesNotExist:
         raise Http404("This subject doesn't exist.")
     return render(request, 'subjects/show.html', {'subject': subject})
+    

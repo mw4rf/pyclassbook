@@ -94,6 +94,19 @@ class Exam(models.Model):
             return float("{0:.2f}".format(res)) # round to 2 decimal points
         except:
             return 0
+            
+    @property
+    def count_marks_occurrences(self):
+        ''' Returns an array with with the number of occurrences for each mark.
+        e.g. {0: 3, 1: 0, 2: 0, 3: 0, 4: 2, 5: 0, ... } : 3 marks 0/20, 2 marks 4/20
+        '''
+        marks = self.marks_as_array
+        count = [x for x in range(0,21)]
+        stats = {}
+        for x in count:
+            stats[x] = marks.count(x)
+        return stats
+        
     
 class Subject(models.Model):
     # UUID

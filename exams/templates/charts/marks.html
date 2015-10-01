@@ -1,0 +1,31 @@
+{% load i18n %}
+{% load tool_tags %}
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    var data = {
+        labels: {{ exam.count_marks_occurrences|list_keys }},
+        datasets: [
+            {
+                label: "{% trans 'Marks' %}",
+                fillColor: "rgba(151,187,205,0.2)",
+                strokeColor: "rgba(151,187,205,1)",
+                pointColor: "rgba(151,187,205,1)",
+                pointStrokeColor: "#fff",
+                pointHighlightFill: "#fff",
+                pointHighlightStroke: "rgba(220,220,220,1)",
+                data: {{ exam.count_marks_occurrences|list_values }}
+            }
+        ]
+    };
+    var ctx = document.getElementById("marksChart").getContext("2d");
+    var myLineChart = new Chart(ctx).Line(data, {
+        // Boolean - whether or not the chart should be responsive and resize when the browser does.
+        responsive: true,
+        // Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
+        maintainAspectRatio: false,
+    });
+});
+</script>
+
+<canvas id="marksChart" class="img-responsive" height="300"></canvas>

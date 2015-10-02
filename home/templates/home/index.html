@@ -13,6 +13,19 @@
 </div>
 
 <div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h2 class="panel-title">{% trans 'Stats' %}</h2>
+        </div>
+        <div class="panel-body">
+            {% blocktrans with st=counters.students mk=counters.marks cs=counters.courses sb=counters.subjects ex=counters.exams %}
+            The database contains <b>{{cs}} courses</b> with <b>{{ex}} exams</b> and <b>{{sb}} subjects</b>; <b>{{st}} students</b> with <b>{{mk}} marks</b>.
+            {% endblocktrans %}
+        </div>
+    </div>
+</div>
+
+<div class="container">
 
     <div class="alert alert-info">
         {% trans "This should display in your browser ACCEPTED-LANGUAGE." %}

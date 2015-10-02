@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-01 21:45+0200\n"
+"POT-Creation-Date: 2015-10-02 16:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -60,7 +60,7 @@ msgstr "Date de fin"
 msgid "Course"
 msgstr "Cours"
 
-#: courses/templates/charts/averages.html:10
+#: courses/templates/charts/courses_averages.html:10
 #: courses/templates/courses/show.html:59
 msgid "Averages distribution"
 msgstr "Répartition des moyennes"
@@ -166,7 +166,8 @@ msgstr "Titre"
 msgid "Subject"
 msgstr "Sujet"
 
-#: exams/templates/charts/marks.html:10 exams/templates/exams/show.html:84
+#: exams/templates/charts/exams_marks.html:10
+#: exams/templates/exams/show.html:84
 msgid "Marks distribution"
 msgstr "Répartition des notes"
 
@@ -226,15 +227,36 @@ msgstr "Sujet : %(name)s (%(kind)s)"
 msgid "Comment"
 msgstr "Commentaires"
 
-#: home/templates/home/index.html:12
+#: home/templates/home/index.html:18
+#, fuzzy
+#| msgid "Statistics"
+msgid "Stats"
+msgstr "Statistiques"
+
+#: home/templates/home/index.html:21
+#, python-format
+msgid ""
+"\n"
+"            The database contains <b>%(cs)s courses</b> with <b>%(ex)s "
+"exams</b> and <b>%(sb)s subjects</b>; <b>%(st)s students</b> with <b>%(mk)s "
+"marks</b>.\n"
+"            "
+msgstr ""
+"\n"
+"            La base de données contient actuellement <b>%(cs)s cours</b> possédant <b>%(ex)s "
+"examens</b> dotés de <b>%(sb)s subjets</b> ; ainsi que <b>%(st)s étudiants</b> avec <b>%(mk)s "
+"notes</b>.\n"
+"            "
+
+#: home/templates/home/index.html:31
 msgid "This should display in your browser ACCEPTED-LANGUAGE."
 msgstr "Ce message devrait s'afficher en français."
 
-#: pyclassbook/settings.py:104
+#: pyclassbook/settings.py:109
 msgid "French"
 msgstr "Français"
 
-#: pyclassbook/settings.py:105
+#: pyclassbook/settings.py:110
 msgid "English"
 msgstr "Anglais"
 
@@ -280,7 +302,7 @@ msgstr "Français langue maternelle ?"
 msgid "Has a third time ?"
 msgstr "Tiers temps ?"
 
-#: students/templates/charts/marks.html:10
+#: students/templates/charts/students_marks.html:10
 #: students/templates/students/show.html:39
 msgid "Marks progression"
 msgstr "Progression des notes"

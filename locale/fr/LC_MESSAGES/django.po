@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-02 16:54+0200\n"
+"POT-Creation-Date: 2015-10-02 20:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -131,8 +131,10 @@ msgid "Students"
 msgstr "Étudiants"
 
 #: courses/templates/courses/show.html:76
+#, fuzzy
+#| msgid "Marks Count:"
 msgid "Marks count"
-msgstr "Nbr. Notes"
+msgstr "Nombre de notes :"
 
 #: courses/templates/courses/show.html:77 students/models.py:17
 #: students/templates/students/index.html:16
@@ -186,10 +188,8 @@ msgid "Exam: %(name)s (%(c)s)"
 msgstr "Examen : %(name)s (%(c)s)"
 
 #: exams/templates/exams/show.html:35 exams/templates/exams/show.html.py:57
-#, fuzzy
-#| msgid "Marks Count:"
 msgid "Marks Count"
-msgstr "Nombre de notes :"
+msgstr "Nbr. de notes"
 
 #: exams/templates/exams/show.html:53
 msgid "Statistics"
@@ -243,9 +243,9 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"            La base de données contient actuellement <b>%(cs)s cours</b> possédant <b>%(ex)s "
-"examens</b> dotés de <b>%(sb)s subjets</b> ; ainsi que <b>%(st)s étudiants</b> avec <b>%(mk)s "
-"notes</b>.\n"
+"            La base de données contient actuellement <b>%(cs)s cours</b> "
+"possédant <b>%(ex)s examens</b> dotés de <b>%(sb)s subjets</b> ; ainsi que "
+"<b>%(st)s étudiants</b> avec <b>%(mk)s notes</b>.\n"
 "            "
 
 #: home/templates/home/index.html:31

@@ -13,12 +13,12 @@ def index(request):
     counters['courses']     = Course.objects.count()
     counters['exams']       = Exam.objects.count()
     counters['subjects']    = Subject.objects.count()
-    
+        
     # Build response
     response = {
         'APP_NAME': settings.APP_NAME,
         'APP_VERSION': settings.APP_VERSION,
         'COPYRIGHT': settings.COPYRIGHT,
-        'counters': counters
+        'counters': counters,
     }
     return render(request, 'home/index.html', response)

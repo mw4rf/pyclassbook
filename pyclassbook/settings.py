@@ -10,6 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.8/ref/settings/
 """
 
+APP_NAME = "pyClassBook"
+APP_VERSION = "0.1"
+from datetime import date
+COPYRIGHT = "Copyright © 2014-%s Guillaume Florimond" % str(date.today().year)
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 

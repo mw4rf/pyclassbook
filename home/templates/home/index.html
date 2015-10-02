@@ -4,9 +4,15 @@
 
 {% block content %}
 
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{ APP_NAME }}</h1>
+        <h2>v. {{ APP_VERSION }}</h2>
+        <h3>{{ COPYRIGHT }}</h3>
+    </div>
+</div>
+
 <div class="container">
-    
-    <div class="jumbotron">pyClassbook!</div>
 
     <div class="alert alert-info">
         {% trans "This should display in your browser ACCEPTED-LANGUAGE." %}

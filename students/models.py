@@ -87,11 +87,25 @@ class Student(models.Model):
     @property
     def marks_progression(self):
         from django.utils import formats
-        marks = Mark.objects.filter(student=self.id).order_by('-subject__exam__date')
+        marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
         stats = {}
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
             stats[date] = mark.mark
+        return stats
+        
+    @property
+    def average_progression(self):
+        from django.utils import formats
+        import statistics
+        marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
+        temp = []
+        stats = {}
+        for mark in marks:
+            date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
+            # Get average with this new mark
+            temp.append(mark.mark)
+            stats[date] = float("{0:.1f}".format(statistics.mean(temp)))
         return stats
         
     def future_average(self, course):

@@ -14,11 +14,39 @@ Student: {{ name }}
 
 {% block content %}
     
-    <div class="jumbotron">
-        <div class="container">
-            <h1>{{ student.fullname }}</h1>
-        </div>
+<div class="jumbotron">
+    <div class="container">
+        <h1>{{ student.fullname }}</h1>
+        <h3><a href="mailto={{ student.email }}">{{ student.email }}</a></h3>
+        {% if student.email_alt %}
+            <h3><a href="mailto={{ student.email }}">{{ student.email_alt }}</a></h3>
+        {% endif %}
     </div>
+</div>
+
+<!-- Third Time -->
+{% if student.third_time %}
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-time"></span>
+        {% blocktrans with st=student.fullname %}
+            <b>{{ st }}</b> has a third time.
+        {% endblocktrans %}
+    </div>
+</div>
+{% endif %}
+
+<!-- Foreign Language -->
+{% if not student.native_lang %}
+<div class="container">
+    <div class="alert alert-danger" role="alert">
+        <span class="glyphicon glyphicon-globe"></span>
+        {% blocktrans with st=student.fullname %}
+            <b>{{ st }}</b> is a foreign speaker.
+        {% endblocktrans %}
+    </div>
+</div>
+{% endif %}
 
 <!-- Comments -->
 {% if student.comments %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 13:34+0200\n"
+"POT-Creation-Date: 2015-10-03 13:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid "Kind"
 msgstr "Type"
 
 #: courses/models.py:13 exams/models.py:19 students/models.py:22
-#: students/models.py:138 students/templates/students/show.html:28
+#: students/models.py:138 students/templates/students/show.html:56
 msgid "Comments"
 msgstr "Commentaires"
 
@@ -90,13 +90,13 @@ msgstr "Examens"
 #: courses/templates/courses/show.html:30 exams/models.py:25
 #: exams/models.py:115 exams/templates/exams/index.html:14
 #: exams/templates/exams/index_full.html:14
-#: students/templates/students/show.html:89
+#: students/templates/students/show.html:117
 msgid "Exam"
 msgstr "Examen"
 
 #: courses/templates/courses/show.html:31 exams/models.py:16
 #: exams/templates/exams/index.html:13 exams/templates/exams/index_full.html:13
-#: students/templates/students/show.html:87
+#: students/templates/students/show.html:115
 msgid "Date"
 msgstr "Date"
 
@@ -165,7 +165,7 @@ msgid "Title"
 msgstr "Titre"
 
 #: exams/models.py:123 exams/templates/exams/show.html:100
-#: students/models.py:136 students/templates/students/show.html:90
+#: students/models.py:136 students/templates/students/show.html:118
 msgid "Subject"
 msgstr "Sujet"
 
@@ -216,7 +216,7 @@ msgstr "Étudiant"
 #: exams/templates/exams/show.html:99 exams/templates/subjects/show.html:36
 #: students/models.py:137 students/models.py:144
 #: students/templates/charts/students_marks.html:10
-#: students/templates/students/show.html:88
+#: students/templates/students/show.html:116
 msgid "Mark"
 msgstr "Note"
 
@@ -322,23 +322,45 @@ msgstr "Dernière màj"
 msgid "Student: %(name)s"
 msgstr "Étudiants : %(name)s"
 
-#: students/templates/students/show.html:40
+#: students/templates/students/show.html:32
+#, python-format
+msgid ""
+"\n"
+"            <b>%(st)s</b> has a third time.\n"
+"        "
+msgstr ""
+"\n"
+"            <b>%(st)s</b> bénéficie d'un tiers temps.\n"
+"        "
+
+#: students/templates/students/show.html:44
+#, python-format
+msgid ""
+"\n"
+"            <b>%(st)s</b> is a foreign speaker.\n"
+"        "
+msgstr ""
+"\n"
+"            <b>%(st)s</b> n'a pas le français pour langue maternelle.\n"
+"        "
+
+#: students/templates/students/show.html:68
 msgid "Marks and average progression"
 msgstr "Progression des notes et de la moyenne"
 
-#: students/templates/students/show.html:63
+#: students/templates/students/show.html:91
 msgid "Average:"
 msgstr "Moyenne :"
 
-#: students/templates/students/show.html:67
+#: students/templates/students/show.html:95
 msgid "Std. Dev.:"
 msgstr "Écart Type :"
 
-#: students/templates/students/show.html:71
+#: students/templates/students/show.html:99
 msgid "Marks Count:"
 msgstr "Nombre de notes :"
 
-#: students/templates/students/show.html:79
+#: students/templates/students/show.html:107
 msgid "Future average given the next mark"
 msgstr ""
 "Évolution prévisionnelle de la moyenne en fonction de la prochaine note "

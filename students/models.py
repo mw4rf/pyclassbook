@@ -87,8 +87,10 @@ class Student(models.Model):
     @property
     def marks_progression(self):
         from django.utils import formats
+        from collections import OrderedDict
+        
         marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
-        stats = {}
+        stats = OrderedDict()
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
             stats[date] = mark.mark
@@ -98,9 +100,11 @@ class Student(models.Model):
     def average_progression(self):
         from django.utils import formats
         import statistics
+        from collections import OrderedDict
+        
         marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
         temp = []
-        stats = {}
+        stats = OrderedDict()
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
             # Get average with this new mark

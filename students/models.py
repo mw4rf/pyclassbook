@@ -55,7 +55,7 @@ class Student(models.Model):
             return float("{0:.2f}".format(marks / index))
         except ZeroDivisionError:
             return 0
-        
+    
     def average_for_course(self, course):
         index = 0
         marks = 0
@@ -92,6 +92,19 @@ class Student(models.Model):
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
             stats[date] = mark.mark
+        return stats
+        
+    def future_average(self, course):
+        marks = []
+        for m in Mark.objects.filter(student=self.id):
+            if m.subject.exam.course == course:
+                marks.append(m.mark)
+        import statistics
+        stats = {}
+        for i in range(0,21):
+            temp = marks[:] # temp is not a REFERENCE but a COPY of the original marks list
+            temp.append(i)
+            stats[i] = float("{0:.1f}".format(statistics.mean(temp)))
         return stats
 
     # Fields label in admin area (only for methods)

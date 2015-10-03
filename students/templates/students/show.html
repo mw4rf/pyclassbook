@@ -47,12 +47,14 @@ Student: {{ name }}
 <div class="container"> 
     {% for course in student.courses.all %}
     <div class="panel panel-default">
+      <!-- Heading -->
       <div class="panel-heading">
           <h2 class="panel-title">
               <a href="{% url 'courses:show' course.id %}">{{ course.name }}</a>&nbsp;
               ({{ course.place }}, {{ course|course_years }})
           </h2>
       </div>
+      <!-- Summary -->
       <div class="panel-body">
           <p>
               {% trans "Average:" %} {{ student|average_for_course:course|colorize_mark }},
@@ -60,6 +62,14 @@ Student: {{ name }}
               {% trans "Marks Count:" %} {{ student|count_marks_for_course:course }}
           </p>
       </div>
+      <!-- Future Average -->
+      <div class="panel-body">
+          <b>{% trans "Future average given the next mark" %}</b>
+          <table class="table table-condensed">
+              {{student|future_average:course}}
+          </table>
+      </div>
+      <!-- Marks -->
       <table class="table">
             <thead>
             <tr>

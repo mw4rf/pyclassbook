@@ -37,12 +37,30 @@ def future_average(student, course, autoescape=True):
         esc = conditional_escape
     else:
         esc = lambda x: x
+        
+    current = student.average_for_course(course)
     dic = student.future_average(course)
     result = "<thead><tr>"
+    
     for mark in dic.keys():
-        result = result + '<th>%s</th>' % esc(mark)
+        if dic[mark] < current:
+            css = 'class="danger"'
+        elif dic[mark] == current:
+            css = 'class="warning"'
+        else:
+            css = 'class="success"'
+        result = result + '<th %s>%s</th>' % (css, esc(mark))
+        
     result = result + "</tr></thead>\n<tbody><tr>"
+    
     for average in dic.values():
-        result = result + '<td>%s</td>' % esc(average)
+        if average < current:
+            css = 'class="danger"'
+        elif average == current:
+            css = 'class="warning"'
+        else:
+            css = 'class="success"'
+        result = result + '<td %s>%s</td>' % (css, esc(average))
+        
     result = result + "</tr></tbody>"
     return mark_safe(result)

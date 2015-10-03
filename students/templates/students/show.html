@@ -62,14 +62,16 @@ Student: {{ name }}
               {% trans "Marks Count:" %} {{ student|count_marks_for_course:course }}
           </p>
       </div>
+      
       <!-- Future Average -->
-      <div class="panel-body">
-          <b>{% trans "Future average given the next mark" %}</b>
-          <table class="table table-condensed">
-              {{student|future_average:course}}
-          </table>
-      </div>
+      <hr>
+      <b>{% trans "Future average given the next mark" %}</b>
+      <table class="table table-condensed">
+          {{student|future_average:course}}
+      </table>
+      
       <!-- Marks -->
+      <hr>
       <table class="table">
             <thead>
             <tr>

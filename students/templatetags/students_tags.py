@@ -1,6 +1,7 @@
 from django import template
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
+from django.utils.translation import ugettext as _
 
 register = template.Library()
 
@@ -43,39 +44,42 @@ def future_average(student, course, autoescape=True):
     result = "<thead><tr>"
     
     # Marks
+    result = result + "<th class='active text-right'>%s</th>" % _('New mark')
     for mark in dic.keys():
         if dic[mark] < current:
-            css = 'class="danger"'
+            css = 'class="danger text-center"'
         elif dic[mark] == current:
-            css = 'class="warning"'
+            css = 'class="warning text-center"'
         else:
-            css = 'class="success"'
+            css = 'class="success text-center"'
         result = result + '<th %s>%s</th>' % (css, esc(mark))
         
     result = result + "</tr></thead>\n<tbody><tr>"
     
     # New average
+    result = result + "<td class='active text-right'>%s</td>" % _('New average')
     for average in dic.values():
         if average < current:
-            css = 'class="danger"'
+            css = 'class="danger text-center"'
         elif average == current:
-            css = 'class="warning"'
+            css = 'class="warning text-center"'
         else:
-            css = 'class="success"'
+            css = 'class="success text-center"'
         result = result + '<td %s>%s</td>' % (css, esc(average))
     
     result = result + "</tr>\n<tr>"
     
     # Delta (difference between old and new average)
+    result = result + "<td class='active text-right'>%s</td>" % _('∆')
     for average in dic.values():
         delta = float("{0:.1f}".format(average - current))
         if delta < 0:
-            css = 'class="danger"'
+            css = 'class="danger text-center"'
         elif delta == 0:
-            css = 'class="warning"'
+            css = 'class="warning text-center"'
             delta = "="
         else:
-            css = 'class="success"'
+            css = 'class="success text-center"'
             delta = "+" + str(delta)
         result = result + '<td %s>%s</td>' % (css, esc(delta))
     

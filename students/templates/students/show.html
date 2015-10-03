@@ -65,8 +65,8 @@ Student: {{ name }}
       
       <!-- Future Average -->
       <hr>
-      <b>{% trans "Future average given the next mark" %}</b>
       <table class="table table-condensed">
+          <caption><b>{% trans "Future average given the next mark" %}</b></caption>
           {{student|future_average:course}}
       </table>
       

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 11:11+0200\n"
+"POT-Creation-Date: 2015-10-03 12:40+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -90,13 +90,13 @@ msgstr "Examens"
 #: courses/templates/courses/show.html:30 exams/models.py:25
 #: exams/models.py:115 exams/templates/exams/index.html:14
 #: exams/templates/exams/index_full.html:14
-#: students/templates/students/show.html:78
+#: students/templates/students/show.html:80
 msgid "Exam"
 msgstr "Examen"
 
 #: courses/templates/courses/show.html:31 exams/models.py:16
 #: exams/templates/exams/index.html:13 exams/templates/exams/index_full.html:13
-#: students/templates/students/show.html:76
+#: students/templates/students/show.html:78
 msgid "Date"
 msgstr "Date"
 
@@ -164,7 +164,7 @@ msgid "Title"
 msgstr "Titre"
 
 #: exams/models.py:123 exams/templates/exams/show.html:100
-#: students/models.py:122 students/templates/students/show.html:79
+#: students/models.py:122 students/templates/students/show.html:81
 msgid "Subject"
 msgstr "Sujet"
 
@@ -214,7 +214,7 @@ msgstr "Étudiant"
 
 #: exams/templates/exams/show.html:99 exams/templates/subjects/show.html:36
 #: students/models.py:123 students/models.py:130
-#: students/templates/students/show.html:77
+#: students/templates/students/show.html:79
 msgid "Mark"
 msgstr "Note"
 
@@ -337,6 +337,20 @@ msgstr "Écart Type :"
 msgid "Marks Count:"
 msgstr "Nombre de notes :"
 
-#: students/templates/students/show.html:67
+#: students/templates/students/show.html:69
 msgid "Future average given the next mark"
-msgstr "Évolution prévisionnelle de la moyenne en fonction de la prochaine note obtenue"
+msgstr ""
+"Évolution prévisionnelle de la moyenne en fonction de la prochaine note "
+"obtenue"
+
+#: students/templatetags/students_tags.py:47
+msgid "New mark"
+msgstr "Note future"
+
+#: students/templatetags/students_tags.py:60
+msgid "New average"
+msgstr "Moy. future"
+
+#: students/templatetags/students_tags.py:73
+msgid "∆"
+msgstr "∆"

@@ -17,9 +17,9 @@ Student: {{ name }}
 <div class="jumbotron">
     <div class="container">
         <h1>{{ student.fullname }}</h1>
-        <h3><a href="mailto={{ student.email }}">{{ student.email }}</a></h3>
+        <h3><a href="mailto:{{ student.email }}">{{ student.email }}</a></h3>
         {% if student.email_alt %}
-            <h3><a href="mailto={{ student.email }}">{{ student.email_alt }}</a></h3>
+            <h3><a href="mailto:{{ student.email }}">{{ student.email_alt }}</a></h3>
         {% endif %}
     </div>
 </div>

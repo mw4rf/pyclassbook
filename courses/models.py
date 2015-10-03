@@ -51,10 +51,14 @@ class Course(models.Model):
         e.g. {0: 3, 1: 0, 2: 0, 3: 0, 4: 2, 5: 0, ... } : 3 students have 0/20, 2 students have 4/20
         '''
         averages = self.averages
+        
+        # Must round (float values are not shown in the chart)
+        round_averages = [ round(elem, 0) for elem in averages ]
+        
         count = [x for x in range(0,21)]
         stats = {}
         for x in count:
-            stats[x] = averages.count(x)
+            stats[x] = round_averages.count(x)
         return stats
         
 

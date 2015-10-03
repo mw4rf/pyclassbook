@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import Http404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 from .models import Exam, Subject
 
@@ -22,7 +23,7 @@ def index(request):
     # Requesting
     exams_list = Exam.objects.all().order_by(order_by)
     # Paginating
-    paginator = Paginator(exams_list, 20) # Show 20 items per page
+    paginator = Paginator(exams_list, settings.EXAMS_PER_PAGE) # config.py
     page = request.GET.get('page')
     try:
         exams = paginator.page(page)

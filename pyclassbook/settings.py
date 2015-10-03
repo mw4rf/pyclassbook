@@ -15,6 +15,11 @@ APP_VERSION = "0.1"
 from datetime import date
 COPYRIGHT = "Copyright © 2014-%s Guillaume Florimond" % str(date.today().year)
 
+# Pagination
+STUDENTS_PER_PAGE   = 100
+COURSES_PER_PAGE    = 10
+EXAMS_PER_PAGE      = 10
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.conf import settings
 
 from .models import Course
 from students.models import Student
@@ -22,7 +23,7 @@ def index(request):
     # Requesting
     courses_list = Course.objects.all().order_by(order_by)
     # Paginating
-    paginator = Paginator(courses_list, 20) # Show 20 items per page
+    paginator = Paginator(courses_list, settings.COURSES_PER_PAGE) # config.py
     page = request.GET.get('page')
     try:
         courses = paginator.page(page)

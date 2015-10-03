@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import Http404
+from django.conf import settings
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
@@ -23,7 +24,7 @@ def index(request):
     # Requesting
     students_list = Student.objects.all().order_by(order_by)
     # Paginating
-    paginator = Paginator(students_list, 100) # Show 100 items per page
+    paginator = Paginator(students_list, settings.STUDENTS_PER_PAGE) # config.py
     page = request.GET.get('page')
     try:
         students = paginator.page(page)

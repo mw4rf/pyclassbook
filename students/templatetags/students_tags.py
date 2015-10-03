@@ -42,6 +42,7 @@ def future_average(student, course, autoescape=True):
     dic = student.future_average(course)
     result = "<thead><tr>"
     
+    # Marks
     for mark in dic.keys():
         if dic[mark] < current:
             css = 'class="danger"'
@@ -53,6 +54,7 @@ def future_average(student, course, autoescape=True):
         
     result = result + "</tr></thead>\n<tbody><tr>"
     
+    # New average
     for average in dic.values():
         if average < current:
             css = 'class="danger"'
@@ -61,6 +63,21 @@ def future_average(student, course, autoescape=True):
         else:
             css = 'class="success"'
         result = result + '<td %s>%s</td>' % (css, esc(average))
-        
+    
+    result = result + "</tr>\n<tr>"
+    
+    # Delta (difference between old and new average)
+    for average in dic.values():
+        delta = float("{0:.1f}".format(average - current))
+        if delta < 0:
+            css = 'class="danger"'
+        elif delta == 0:
+            css = 'class="warning"'
+            delta = "="
+        else:
+            css = 'class="success"'
+            delta = "+" + str(delta)
+        result = result + '<td %s>%s</td>' % (css, esc(delta))
+    
     result = result + "</tr></tbody>"
     return mark_safe(result)

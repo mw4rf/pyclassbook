@@ -90,7 +90,7 @@ class Student(models.Model):
         from collections import OrderedDict
         
         marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
-        stats = OrderedDict()
+        stats = OrderedDict() # needed to key the sort order by date, as simple dict do not preserve order
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
             stats[date] = mark.mark
@@ -104,7 +104,7 @@ class Student(models.Model):
         
         marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
         temp = []
-        stats = OrderedDict()
+        stats = OrderedDict() # needed to key the sort order by date, as simple dict do not preserve order
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
             # Get average with this new mark

@@ -10,20 +10,29 @@
             
             <ul class="nav navbar-nav">
                 <li class="{% navactive request 'students:index' %}">
-                    <a href="{% url 'students:index' %}">{% trans 'Students' %}</a>
+                    <a href="{% url 'students:index' %}">
+                        <span class="glyphicon glyphicon-user"></span>
+                        {% trans 'Students' %}
+                    </a>
                 </li>
                 <li class="{% navactive request 'courses:index' %}">
-                    <a href="{% url 'courses:index' %}">{% trans 'Courses' %}</a>
+                    <a href="{% url 'courses:index' %}">
+                        <span class="glyphicon glyphicon-blackboard"></span>
+                        {% trans 'Courses' %}
+                    </a>
                 </li>
                 <li class="{% navactive request 'exams:index' %}">
-                    <a href="{% url 'exams:index' %}">{% trans 'Exams' %}</a>
+                    <a href="{% url 'exams:index' %}">
+                        <span class="glyphicon glyphicon-edit"></span>
+                        {% trans 'Exams' %}
+                    </a>
                 </li>
              </ul>
              
              <ul class="nav navbar-nav navbar-right">
                  <!-- Export -->
                  <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans 'Export' %}<span class="caret"></span></a>
+                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud-download"></span> {% trans 'Export' %}<span class="caret"></span></a>
                      <ul class="dropdown-menu">
                       <li>
                           <a href="{% url 'students:csv' %}">
@@ -35,7 +44,7 @@
                  </li>
                  <!-- Full Lists -->
                  <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% trans 'Full Lists' %}<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list"></span> {% trans 'Full Lists' %}<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                      <li><a href="{% url 'students:index_full' %}">{% trans 'Students' %}</a></li>
                      <li><a href="{% url 'courses:index_full' %}">{% trans 'Courses' %}</a></li>
@@ -44,7 +53,10 @@
                  </li>
                  <!-- Admin -->
                  <li class="">
-                     <a href="{% url 'admin:index' %}">{% trans 'Admin' %}</a>
+                     <a href="{% url 'admin:index' %}">
+                         <span class="glyphicon glyphicon-wrench"></span>
+                         {% trans 'Admin' %}
+                     </a>
                  </li>
              </ul>
              

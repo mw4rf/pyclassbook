@@ -44,42 +44,42 @@ def future_average(student, course, autoescape=True):
     result = "<thead><tr>"
     
     # Marks
-    result = result + "<th class='active text-right'>%s</th>" % _('New mark')
+    result = result + "<th class='active right aligned'>%s</th>" % _('New mark')
     for mark in dic.keys():
         if dic[mark] < current:
-            css = 'class="danger text-center"'
+            css = 'class="negative center aligned"'
         elif dic[mark] == current:
-            css = 'class="warning text-center"'
+            css = 'class="warning center aligned"'
         else:
-            css = 'class="success text-center"'
+            css = 'class="positive center aligned"'
         result = result + '<th %s>%s</th>' % (css, esc(mark))
         
     result = result + "</tr></thead>\n<tbody><tr>"
     
     # New average
-    result = result + "<td class='active text-right'>%s</td>" % _('New average')
+    result = result + "<td class='active right aligned'>%s</td>" % _('New average')
     for average in dic.values():
         if average < current:
-            css = 'class="danger text-center"'
+            css = 'class="negative center aligned"'
         elif average == current:
-            css = 'class="warning text-center"'
+            css = 'class="warning center aligned"'
         else:
-            css = 'class="success text-center"'
+            css = 'class="positive center aligned"'
         result = result + '<td %s>%s</td>' % (css, esc(average))
     
     result = result + "</tr>\n<tr>"
     
     # Delta (difference between old and new average)
-    result = result + "<td class='active text-right'>%s</td>" % _('∆')
+    result = result + "<td class='active right aligned'>%s</td>" % _('∆')
     for average in dic.values():
         delta = float("{0:.1f}".format(average - current))
         if delta < 0:
-            css = 'class="danger text-center"'
+            css = 'class="negative center aligned"'
         elif delta == 0:
-            css = 'class="warning text-center"'
+            css = 'class="warning center aligned"'
             delta = "="
         else:
-            css = 'class="success text-center"'
+            css = 'class="positive center aligned"'
             delta = "+" + str(delta)
         result = result + '<td %s>%s</td>' % (css, esc(delta))
     

@@ -8,8 +8,8 @@ register = template.Library()
 @register.filter()
 def colorize_list_group_item(value, threshold):
     if value < threshold:
-        return "list-group-item-danger"
+        return "orange inverted"
     elif value == threshold:
-        return "list-group-item-warning"
+        return "yellow inverted"
     else:
-        return "list-group-item-success"
+        return "olive inverted"

@@ -1,36 +1,34 @@
 {% load navactive %}
 {% load i18n %}
 
-<div class="ui grid">
-    <div class="ui fixed menu navbar page grid">
-        <a class="item brand" href="/">pyClassBook</a>
-        <a class="item {% navactive request 'students:index' %}" href="{% url 'students:index' %}">{% trans 'Students' %}</a>
-        <a class="item {% navactive request 'courses:index' %}" href="{% url 'courses:index' %}">{% trans 'Courses' %}</a>
-        <a class="item {% navactive request 'exams:index' %}" href="{% url 'exams:index' %}">{% trans 'Exams' %}</a>
-             
-        <div class="right menu">
-            
-            <!-- Export -->
-            <div class="ui dropdown item">
-                {% trans 'Export' %}<i class="dropdown icon"></i>
-                <div class="menu ui transition hidden">
-                    <a class="item" href="{% url 'students:csv' %}">{% trans 'Students' %}</a>
-                </div>
+<div id="navbar" class="ui fixed menu">
+    <a class="item brand" href="/">pyClassBook</a>
+    <a class="item {% navactive request 'students:index' %}" href="{% url 'students:index' %}">{% trans 'Students' %}</a>
+    <a class="item {% navactive request 'courses:index' %}" href="{% url 'courses:index' %}">{% trans 'Courses' %}</a>
+    <a class="item {% navactive request 'exams:index' %}" href="{% url 'exams:index' %}">{% trans 'Exams' %}</a>
+         
+    <div class="right menu">
+        
+        <!-- Export -->
+        <div class="ui dropdown item">
+            {% trans 'Export' %}<i class="dropdown icon"></i>
+            <div class="menu ui transition hidden">
+                <a class="item" href="{% url 'students:csv' %}">{% trans 'Students' %}</a>
             </div>
-
-            <!-- Full Lists -->
-            <div class="ui dropdown item">
-                {% trans 'Full Lists' %}<i class="dropdown icon"></i>
-                <div class="menu ui transition hidden">
-                    <a class="item" href="{% url 'students:index_full' %}">{% trans 'Students' %}</a>
-                    <a class="item" href="{% url 'courses:index_full' %}">{% trans 'Courses' %}</a>
-                    <a class="item" href="{% url 'exams:index_full' %}">{% trans 'Exams' %}</a>
-                </div>
-            </div>
-            
-            <!-- Admin -->
-            <a class="item" href="{% url 'admin:index' %}">{% trans 'Admin' %}</a>
-             
         </div>
+
+        <!-- Full Lists -->
+        <div class="ui dropdown item">
+            {% trans 'Full Lists' %}<i class="dropdown icon"></i>
+            <div class="menu ui transition hidden">
+                <a class="item" href="{% url 'students:index_full' %}">{% trans 'Students' %}</a>
+                <a class="item" href="{% url 'courses:index_full' %}">{% trans 'Courses' %}</a>
+                <a class="item" href="{% url 'exams:index_full' %}">{% trans 'Exams' %}</a>
+            </div>
+        </div>
+        
+        <!-- Admin -->
+        <a class="item" href="{% url 'admin:index' %}">{% trans 'Admin' %}</a>
+         
     </div>
 </div>

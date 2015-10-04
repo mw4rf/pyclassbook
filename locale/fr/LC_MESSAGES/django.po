@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-03 13:47+0200\n"
+"POT-Creation-Date: 2015-10-04 10:37+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -43,7 +43,7 @@ msgid "Kind"
 msgstr "Type"
 
 #: courses/models.py:13 exams/models.py:19 students/models.py:22
-#: students/models.py:138 students/templates/students/show.html:56
+#: students/models.py:142 students/templates/students/show.html:56
 msgid "Comments"
 msgstr "Commentaires"
 
@@ -82,8 +82,8 @@ msgstr "Année univ."
 msgid "Course: %(name)s (%(year)s)"
 msgstr "Cours : %(name)s (%(year)s)"
 
-#: courses/templates/courses/show.html:26 shared/templates/navbar.html:18
-#: shared/templates/navbar.html.py:27
+#: courses/templates/courses/show.html:26 shared/templates/navbar.html:19
+#: shared/templates/navbar.html.py:42
 msgid "Exams"
 msgstr "Examens"
 
@@ -126,8 +126,8 @@ msgstr "ÉcType"
 msgid "Median"
 msgstr "Médiane"
 
-#: courses/templates/courses/show.html:69 shared/templates/navbar.html:12
-#: shared/templates/navbar.html.py:25
+#: courses/templates/courses/show.html:69 shared/templates/navbar.html:13
+#: shared/templates/navbar.html.py:31 shared/templates/navbar.html:40
 msgid "Students"
 msgstr "Étudiants"
 
@@ -165,7 +165,7 @@ msgid "Title"
 msgstr "Titre"
 
 #: exams/models.py:123 exams/templates/exams/show.html:100
-#: students/models.py:136 students/templates/students/show.html:118
+#: students/models.py:140 students/templates/students/show.html:118
 msgid "Subject"
 msgstr "Sujet"
 
@@ -209,12 +209,12 @@ msgid "Lower Mark"
 msgstr "Note Min."
 
 #: exams/templates/exams/show.html:98 exams/templates/subjects/show.html:35
-#: students/models.py:30 students/models.py:135
+#: students/models.py:30 students/models.py:139
 msgid "Student"
 msgstr "Étudiant"
 
 #: exams/templates/exams/show.html:99 exams/templates/subjects/show.html:36
-#: students/models.py:137 students/models.py:144
+#: students/models.py:141 students/models.py:148
 #: students/templates/charts/students_marks.html:10
 #: students/templates/students/show.html:116
 msgid "Mark"
@@ -254,11 +254,11 @@ msgstr ""
 msgid "This should display in your browser ACCEPTED-LANGUAGE."
 msgstr "Ce message devrait s'afficher en français."
 
-#: pyclassbook/settings.py:109
+#: pyclassbook/settings.py:114
 msgid "French"
 msgstr "Français"
 
-#: pyclassbook/settings.py:110
+#: pyclassbook/settings.py:115
 msgid "English"
 msgstr "Anglais"
 
@@ -266,17 +266,21 @@ msgstr "Anglais"
 msgid "pyClassBook"
 msgstr ""
 
-#: shared/templates/navbar.html:15 shared/templates/navbar.html.py:26
+#: shared/templates/navbar.html:16 shared/templates/navbar.html.py:41
 #: students/models.py:27 students/templates/students/index.html:19
 #: students/templates/students/index_full.html:19
 msgid "Courses"
 msgstr "Cours"
 
-#: shared/templates/navbar.html:23
+#: shared/templates/navbar.html:26
+msgid "Export"
+msgstr "Exportation"
+
+#: shared/templates/navbar.html:38
 msgid "Full Lists"
 msgstr "Listes complètes"
 
-#: shared/templates/navbar.html:31
+#: shared/templates/navbar.html:47
 msgid "Admin"
 msgstr "Administration"
 

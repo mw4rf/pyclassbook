@@ -2,7 +2,7 @@
 {% load i18n %}
 
 <div class="ui grid">
-    <div class="ui inverted fixed menu navbar page grid">
+    <div class="ui fixed menu navbar page grid">
         <a class="item brand" href="/">pyClassBook</a>
         <a class="item {% navactive request 'students:index' %}" href="{% url 'students:index' %}">{% trans 'Students' %}</a>
         <a class="item {% navactive request 'courses:index' %}" href="{% url 'courses:index' %}">{% trans 'Courses' %}</a>

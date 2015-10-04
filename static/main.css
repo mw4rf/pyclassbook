@@ -1,10 +1,4 @@
 
-/**
-* FIX: links insite LABEL and BADGE should not be blue (too hard to read)
-**/
-.label a, .badge a {
-color: white;
-}
 
 /**
 * FIX: remove vertical white space between NAVBAR and JUMBOTRON.

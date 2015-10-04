@@ -1,65 +1,36 @@
 {% load navactive %}
 {% load i18n %}
 
-<nav class="navbar navbar-default navbar-static-top">
-     <div class="container-fluid">
-         <div class="navbar-header">
-             <a class="navbar-brand" href="/">pyClassBook</a>
-         </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            
-            <ul class="nav navbar-nav">
-                <li class="{% navactive request 'students:index' %}">
-                    <a href="{% url 'students:index' %}">
-                        <span class="glyphicon glyphicon-user"></span>
-                        {% trans 'Students' %}
-                    </a>
-                </li>
-                <li class="{% navactive request 'courses:index' %}">
-                    <a href="{% url 'courses:index' %}">
-                        <span class="glyphicon glyphicon-blackboard"></span>
-                        {% trans 'Courses' %}
-                    </a>
-                </li>
-                <li class="{% navactive request 'exams:index' %}">
-                    <a href="{% url 'exams:index' %}">
-                        <span class="glyphicon glyphicon-edit"></span>
-                        {% trans 'Exams' %}
-                    </a>
-                </li>
-             </ul>
+<div class="ui grid">
+    <div class="ui inverted fixed menu navbar page grid">
+        <a class="item brand" href="/">pyClassBook</a>
+        <a class="item {% navactive request 'students:index' %}" href="{% url 'students:index' %}">{% trans 'Students' %}</a>
+        <a class="item {% navactive request 'courses:index' %}" href="{% url 'courses:index' %}">{% trans 'Courses' %}</a>
+        <a class="item {% navactive request 'exams:index' %}" href="{% url 'exams:index' %}">{% trans 'Exams' %}</a>
              
-             <ul class="nav navbar-nav navbar-right">
-                 <!-- Export -->
-                 <li class="dropdown">
-                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cloud-download"></span> {% trans 'Export' %}<span class="caret"></span></a>
-                     <ul class="dropdown-menu">
-                      <li>
-                          <a href="{% url 'students:csv' %}">
-                              <span class="glyphicon glyphicon-cloud-download"></span>
-                              {% trans 'Students' %}
-                          </a>
-                      </li>
-                     </ul>
-                 </li>
-                 <!-- Full Lists -->
-                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-list"></span> {% trans 'Full Lists' %}<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                     <li><a href="{% url 'students:index_full' %}">{% trans 'Students' %}</a></li>
-                     <li><a href="{% url 'courses:index_full' %}">{% trans 'Courses' %}</a></li>
-                     <li><a href="{% url 'exams:index_full' %}">{% trans 'Exams' %}</a></li>
-                    </ul>
-                 </li>
-                 <!-- Admin -->
-                 <li class="">
-                     <a href="{% url 'admin:index' %}">
-                         <span class="glyphicon glyphicon-wrench"></span>
-                         {% trans 'Admin' %}
-                     </a>
-                 </li>
-             </ul>
+        <div class="right menu">
+            
+            <!-- Export -->
+            <div class="ui dropdown item">
+                {% trans 'Export' %}<i class="dropdown icon"></i>
+                <div class="menu ui transition hidden">
+                    <a class="item" href="{% url 'students:csv' %}">{% trans 'Students' %}</a>
+                </div>
+            </div>
+
+            <!-- Full Lists -->
+            <div class="ui dropdown item">
+                {% trans 'Full Lists' %}<i class="dropdown icon"></i>
+                <div class="menu ui transition hidden">
+                    <a class="item" href="{% url 'students:index_full' %}">{% trans 'Students' %}</a>
+                    <a class="item" href="{% url 'courses:index_full' %}">{% trans 'Courses' %}</a>
+                    <a class="item" href="{% url 'exams:index_full' %}">{% trans 'Exams' %}</a>
+                </div>
+            </div>
+            
+            <!-- Admin -->
+            <a class="item" href="{% url 'admin:index' %}">{% trans 'Admin' %}</a>
              
         </div>
     </div>
-</nav>
+</div>

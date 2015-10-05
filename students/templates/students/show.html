@@ -71,7 +71,7 @@ Student: {{ name }}
       
     <!-- Summary -->
     {% with average=student|average_for_course:course stddev=student|stddev_for_course:course %}
-    <div class="ui segments">
+    <div class="ui horizontal segments">
       <div class="ui segment {{average|colorize_list_group_item:10}}">
           <b>{% trans "Average:" %}
           {{ average }}</b>

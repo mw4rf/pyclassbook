@@ -1,0 +1,7 @@
+
+/**
+* FIX: links insite LABEL and BADGE should not be blue (too hard to read)
+**/
+.label a {
+    color: white;
+}

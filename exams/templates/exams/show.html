@@ -10,89 +10,81 @@ Exam: {{ name }} ({{c}})
 
 {% block content %}
     
-<div class="jumbotron">
-    <div class="container">
-        <h1>{{ exam }}</h1>
-        <h2>
-            <a href="{% url 'courses:show' exam.course.id %}">{{ exam.course }}</a> 
-        </h2>
-        <h3>
-            {{ exam.date }}, {{ exam.place }}, {{ exam.time_allowed }} {% trans 'hour(s)' %}
-        </h3>
+<div class="ui piled very padded container segment">
+    <h1 class="ui header">{{ exam }}</h1>
+    <div class="sub header">
+        <a href="{% url 'courses:show' exam.course.id %}">{{ exam.course }}</a> 
+    </div>
+    <div="sub header">
+        {{ exam.date }}, {{ exam.place }}, {{ exam.time_allowed }} {% trans 'hour(s)' %}
     </div>
 </div>
 
 <!-- Subjects -->
-<div class="container">    
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Subjects" %}</h2></div>
-      <ul class="list-group">
-        {% for s in exam.subjects %}
-            <li class="list-group-item">
-                <a href="{% url 'exams:subject' s.id %}">{{ s.kind }}</a>
-                <div class="pull-right">
-                    <span class="label label-default">
-                        {% trans "Marks Count"%} {{ s.count_marks }}
-                    </span>&nbsp;
-                    <span class="label label-default">
-                        {% trans "Average"%} {{ s.average }}
-                    </span>&nbsp;
-                    <span class="label label-default">
-                        {% trans "Std. Dev."%} {{ s.stddev }}
-                    </span>
-                </div>
-            </li>
-        {% endfor %}
-      </ul>
+<div class="ui container segment">    
+    <h2 class="ui header">{% trans "Subjects" %}</h2>
+    <div class="ui segments">
+    {% for s in exam.subjects %}
+    <div class="ui segment">
+        <h3 class="ui header"><a href="{% url 'exams:subject' s.id %}">{{ s.kind }}</a></h3>
+        <div class="ui">
+            <span class="ui label">
+                {% trans "Marks Count"%}
+                <div class="detail">{{ s.count_marks }}</div>
+            </span>&nbsp;
+            <span class="ui label">
+                {% trans "Average"%}
+                <div class="detail">{{ s.average }}</div>
+            </span>&nbsp;
+            <span class="ui label">
+                {% trans "Std. Dev."%}
+                <div class="detail">{{ s.stddev }}</div>
+            </span>
+        </div>
+    </div>
+    {% endfor %}
     </div>
 </div>
 
 <!-- Stats -->
-<div class="container">
-    <div class="panel panel-default">
-        <div class="panel-heading"><h2 class="panel-title">{% trans "Statistics" %}</h2></div>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>{% trans "Marks Count" %}</th>
-                <th>{% trans "Average" %}</th>
-                <th>{% trans "Std. Dev." %}</th>
-                <th>{% trans "Median" %}</th>
-                <th>{% trans "Variance" %}</th>
-                <th>{% trans "Higher Mark" %}</th>
-                <th>{% trans "Lower Mark" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td><span class="badge">{{ exam.count_marks }}</span></td>
-                <td><span class="badge">{{ exam.average }}</span></td>
-                <td><span class="badge">{{ exam.stddev }}</span></td>
-                <td><span class="badge">{{ exam.median }}</span></td>
-                <td><span class="badge">{{ exam.variance }}</span></td>
-                <td><span class="badge">{{ exam.higher_mark }}</span></td>
-                <td><span class="badge">{{ exam.lower_mark }}</span></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+<div class="ui container segment">
+    <h2 class="ui header">{% trans "Statistics" %}</h2>
+    <table class="ui single line compact table">
+        <thead>
+        <tr>
+            <th>{% trans "Marks Count" %}</th>
+            <th>{% trans "Average" %}</th>
+            <th>{% trans "Std. Dev." %}</th>
+            <th>{% trans "Median" %}</th>
+            <th>{% trans "Variance" %}</th>
+            <th>{% trans "Higher Mark" %}</th>
+            <th>{% trans "Lower Mark" %}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td><span class="badge">{{ exam.count_marks }}</span></td>
+            <td><span class="badge">{{ exam.average }}</span></td>
+            <td><span class="badge">{{ exam.stddev }}</span></td>
+            <td><span class="badge">{{ exam.median }}</span></td>
+            <td><span class="badge">{{ exam.variance }}</span></td>
+            <td><span class="badge">{{ exam.higher_mark }}</span></td>
+            <td><span class="badge">{{ exam.lower_mark }}</span></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 <!-- Charts -->
-<div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Marks distribution" %}</h2></div>
-      <div class="panel-body">
-          {% include 'charts/exams_marks.html' %}
-      </div>
-    </div>
+<div class="ui container segment">
+    <h2 class="ui header">{% trans "Marks distribution" %}</h2>
+    {% include 'charts/exams_marks.html' %}
 </div>
 
 <!-- Marks -->
-<div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Marks" %}</h2></div>
-      <table class="table table-hover">
+<div class="ui container segment">
+      <h2 class="ui header">{% trans "Marks" %}</h2>
+      <table class="ui single line table">
           <thead>
           <tr>
               <th>{% trans "Student" %}</th>
@@ -105,9 +97,9 @@ Exam: {{ name }} ({{c}})
               <tr>
                   <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
                   {% if mark.mark >= 10 %}
-                      <td class="bg-success">
+                      <td class="positive">
                   {% else %}
-                      <td class="bg-danger">
+                      <td class="negative">
                   {% endif %}
                       {{ mark.mark|colorize_mark }}</td>
                   <td><a href="{% url 'exams:subject' mark.subject.id %}">{{ mark.subject.kind }}</a></td>

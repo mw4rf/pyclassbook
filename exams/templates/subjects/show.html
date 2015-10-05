@@ -10,26 +10,21 @@ Subject: {{ name }} ({{kind}})
 
 {% block content %}
     
-<div class="jumbotron">
-    <div class="container">
-        <h1>{{ subject.kind }}</h1>
-        <h2><a href="{% url 'exams:exam' subject.exam.id %}">{{ subject.exam }}</a></h2>
-    </div>
+<div class="ui piled very padded container segment">
+    <h1 class="ui header">{{ subject.kind }}</h1>
+    <div class="sub header"><a href="{% url 'exams:exam' subject.exam.id %}">{{ subject.exam }}</a></div>
 </div>
 
 <!-- Title -->
-<div class="container">
-    <div class="panel panel-info">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Title" %}</h2></div>
-      <div class="panel-body">{{ subject.title }}</div>
-    </div>
+<div class="ui container segment">
+      <h2 class="ui header">{% trans "Title" %}</h2>
+      <div class="sub header">{{ subject.title }}</div>
 </div>
 
 <!-- Marks -->
-<div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Marks" %}</h2></div>
-      <table class="table table-hover">
+<div class="ui container segment">
+      <h2 class="ui header">{% trans "Marks" %}</h2>
+      <table class="ui very basic table">
           <thead>
           <tr>
               <th>{% trans "Student" %}</th>
@@ -42,9 +37,9 @@ Subject: {{ name }} ({{kind}})
               <tr>
                   <td><a href="{% url 'students:show' mark.student.id %}">{{ mark.student }}</a></td>
                   {% if mark.mark >= 10 %}
-                      <td class="bg-success">
+                      <td class="positive">
                   {% else %}
-                      <td class="bg-danger">
+                      <td class="negative">
                   {% endif %}
                       {{ mark.mark|colorize_mark }}</td>
                   <td>{{ mark.comment }}</td>

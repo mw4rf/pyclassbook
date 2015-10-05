@@ -13,18 +13,15 @@ Course: {{ name }} ({{year}})
 
 {% block content %}
     
-    <div class="jumbotron">
-        <div class="container">
-            <h1>{{ course.name }}</h1>
-            <h2>{{ course.place }}, {{ course|course_years }}, {{ course.kind }}</h2>
-        </div>
-    </div>
+<div class="ui piled very padded container segment">
+    <h1 class="ui header">{{ course.name }}</h1>
+    <div class="sub header">{{ course.place }}, {{ course|course_years }}, {{ course.kind }}</div>
+</div>
 
 <!-- Exams -->
-<div class="container">    
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Exams" %}</h2></div>
-      <table class="table">
+<div class="ui container segment">    
+      <h2 class="ui header">{% trans "Exams" %}</h2>
+      <table class="ui single line table">
           <thead>
           <tr>
               <th>{% trans 'Exam' %}</th>
@@ -50,24 +47,18 @@ Course: {{ name }} ({{year}})
           {% endfor %}
           </tbody>
       </table>
-    </div>
 </div>
 
 <!-- Charts -->
-<div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Averages distribution" %}</h2></div>
-      <div class="panel-body">
-          {% include 'charts/courses_averages.html' %}
-      </div>
-    </div>
+<div class="ui container segment">
+    <h2 class="ui header">{% trans "Averages distribution" %}</h2>
+    {% include 'charts/courses_averages.html' %}
 </div>
 
 <!-- Students -->
-<div class="container">    
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Students" %}</h2></div>
-      <table class="table table-hover">
+<div class="ui container segment">    
+      <h2 class="ui header">{% trans "Students" %}</h2>
+      <table class="ui single line table">
           <thead>
           <tr>
               <th>{% trans "Name" %}</th>
@@ -93,7 +84,6 @@ Course: {{ name }} ({{year}})
           {% endfor %}
           </tbody>
       </table>
-    </div>
 </div>
 
 {% endblock %}

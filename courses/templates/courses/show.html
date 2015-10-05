@@ -42,7 +42,7 @@ Course: {{ name }} ({{year}})
               <td><span class="ui circular label">{{ exam.count_subjects }}</span></td>
               <td><span class="ui circular label">{{ exam.count_marks }}</span></td>
               <td><span class="ui circular label {{exam.average|colorize_label_average}}">{{ exam.average }}</span></td>
-              <td><span class="ui circular label {{exam.average|colorize_label_stddev}}">{{ exam.stddev }}</span></td>
+              <td><span class="ui circular label {{exam.stddev|colorize_label_stddev}}">{{ exam.stddev }}</span></td>
               <td><span class="ui circular label {{exam.median|colorize_label_mark}}">{{ exam.median }}</span></td>
           </tr>
           {% endfor %}

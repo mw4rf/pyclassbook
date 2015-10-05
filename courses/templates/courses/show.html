@@ -3,6 +3,7 @@
 {% load marks_tags %}
 {% load courses_tags %}
 {% load boolean_tags %}
+{% load colorize_tags %}
 {% load i18n %}
 
 {% block title %}
@@ -13,18 +14,15 @@ Course: {{ name }} ({{year}})
 
 {% block content %}
     
-    <div class="jumbotron">
-        <div class="container">
-            <h1>{{ course.name }}</h1>
-            <h2>{{ course.place }}, {{ course|course_years }}, {{ course.kind }}</h2>
-        </div>
-    </div>
+<div class="ui piled very padded container segment">
+    <h1 class="ui header">{{ course.name }}</h1>
+    <div class="sub header">{{ course.place }}, {{ course|course_years }}, {{ course.kind }}</div>
+</div>
 
 <!-- Exams -->
-<div class="container">    
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Exams" %}</h2></div>
-      <table class="table">
+<div class="ui container segment">    
+      <h2 class="ui header">{% trans "Exams" %}</h2>
+      <table class="ui very basic single line table">
           <thead>
           <tr>
               <th>{% trans 'Exam' %}</th>
@@ -41,33 +39,27 @@ Course: {{ name }} ({{year}})
           <tr>
               <td><a href="{% url 'exams:exam' exam.id %}">{{ exam.name }}</a></td>
               <td>{{ exam.date }}</td>
-              <td>{{ exam.count_subjects }}</td>
-              <td>{{ exam.count_marks }}</td>
-              <td>{{ exam.average }}</td>
-              <td>{{ exam.stddev }}</td>
-              <td>{{ exam.median }}</td>
+              <td><span class="ui circular label">{{ exam.count_subjects }}</span></td>
+              <td><span class="ui circular label">{{ exam.count_marks }}</span></td>
+              <td><span class="ui circular label {{exam.average|colorize_label_average}}">{{ exam.average }}</span></td>
+              <td><span class="ui circular label {{exam.stddev|colorize_label_stddev}}">{{ exam.stddev }}</span></td>
+              <td><span class="ui circular label {{exam.median|colorize_label_mark}}">{{ exam.median }}</span></td>
           </tr>
           {% endfor %}
           </tbody>
       </table>
-    </div>
 </div>
 
 <!-- Charts -->
-<div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Averages distribution" %}</h2></div>
-      <div class="panel-body">
-          {% include 'charts/courses_averages.html' %}
-      </div>
-    </div>
+<div class="ui container segment">
+    <h2 class="ui header">{% trans "Averages distribution" %}</h2>
+    {% include 'charts/courses_averages.html' %}
 </div>
 
 <!-- Students -->
-<div class="container">    
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Students" %}</h2></div>
-      <table class="table table-hover">
+<div class="ui container segment">    
+      <h2 class="ui header">{% trans "Students" %}</h2>
+      <table class="ui very basic single line table">
           <thead>
           <tr>
               <th>{% trans "Name" %}</th>
@@ -83,9 +75,21 @@ Course: {{ name }} ({{year}})
           {% for student in students %}
           <tr>
               <td><a href="{% url 'students:show' student.id %}">{{ student }}</a></td>
-              <td>{{ student|average_for_course:course|colorize_mark }}</td>
-              <td>{{ student|stddev_for_course:course }}</td>
-              <td>{{ student|count_marks_for_course:course }}</td>
+              <td>
+                  {% with avg=student|average_for_course:course %}
+                  <span class="ui circular label {{avg|colorize_label_average}}">{{avg}}</span>
+                  {% endwith %}
+              </td>
+              <td>
+                  {% with stddev=student|stddev_for_course:course %}
+                  {% if avg %}
+                  <span class="ui circular label {{stddev|colorize_label_stddev}}">{{avg}}</span>
+                  {% endif %}
+                  {% endwith %}
+              </td>
+              <td>
+                  <span class="ui circular label">{{ student|count_marks_for_course:course }}</span>
+              </td>
               <td><a href="mailto:{{s.email}}">{{ student.email }}</a></td>
               <td>{{ student.native_lang|bool_as_icon }}</td>
               <td>{{ student.third_time|bool_as_icon }}</td>
@@ -93,7 +97,6 @@ Course: {{ name }} ({{year}})
           {% endfor %}
           </tbody>
       </table>
-    </div>
 </div>
 
 {% endblock %}

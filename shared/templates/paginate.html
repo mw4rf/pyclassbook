@@ -1,27 +1,27 @@
 {% load i18n %}
 
-<div class="container text-center navbar-fixed-bottom">
-    <ul class="pagination">
-        {% if items.has_previous %}
-            <li><a href="?page=1"><span class="glyphicon glyphicon-fast-backward"></span></a></li>
-            <li><a href="?page={{ items.previous_page_number }}"><span class="glyphicon glyphicon-chevron-left"></span></a></li>
-        {% else %}
-            <li class="disabled"><span class="glyphicon glyphicon-fast-backward"></span></li>
-            <li class="disabled"><span class="glyphicon glyphicon-chevron-left"></span></li>
-        {% endif %}
+<div class="ui centered grid padded">
+    <div class="center aligned column">
+        <div class="ui pagination menu">
+            {% if items.has_previous %}
+                <a class="item" href="?page=1"><i class="fast backward icon"></i></a>
+                <a class="item" href="?page={{ items.previous_page_number }}"><i class="backward icon"></i></a>
+            {% else %}
+                <div class="disabled item"><i class="fast backward icon"></i></div>
+                <div class="disabled item"><i class="backward icon"></i></div>
+            {% endif %}
 
-        {% for i in items.paginator.page_range %}
-            <li {% if items.number == i %} class="active" {% endif %}>
-                <a href="?page={{i}}">{{i}}</a>
-            </li>
-        {% endfor %}
+            {% for i in items.paginator.page_range %}
+                    <a {% if items.number == i %} class="active item" {% else %} class="item" {% endif %} href="?page={{i}}">{{i}}</a>
+            {% endfor %}
 
-        {% if items.has_next %}
-            <li><a href="?page={{ items.next_page_number }}"><span class="glyphicon glyphicon-chevron-right"></span></a></li>
-            <li><a href="?page={{ items.paginator.num_pages }}"><span class="glyphicon glyphicon-fast-forward"></span></a></li>
-        {% else %}
-            <li class="disabled"><span class="glyphicon glyphicon-chevron-right"></span></li>
-            <li class="disabled"><span class="glyphicon glyphicon-fast-forward"></span></li>
-        {% endif %}
-    </ul>
+            {% if items.has_next %}
+                <a class="item" href="?page={{ items.next_page_number }}"><i class="forward icon"></i></a>
+                <a class="item" href="?page={{ items.paginator.num_pages }}"><i class="fast forward icon"></i></a>
+            {% else %}
+                <div class="disabled item"><i class="forward icon"></i></div>
+                <div class="disabled item"><i class="fast forward icon"></i></div>
+            {% endif %}
+        </div>
+    </div>
 </div>

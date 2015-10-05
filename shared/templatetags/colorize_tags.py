@@ -5,11 +5,24 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
-@register.filter()
-def colorize_list_group_item(value, threshold):
-    if value < threshold:
-        return "list-group-item-danger"
-    elif value == threshold:
-        return "list-group-item-warning"
+@register.filter
+def colorize_label_average(avg):
+    if avg > 10:
+        return "green"
+    elif avg == 10:
+        return "orange"
     else:
-        return "list-group-item-success"
+        return "red"
+        
+@register.filter
+def colorize_label_stddev(stddev):
+    if stddev > 2:
+        return "red"
+    if stddev > 1:
+        return "orange"
+    else:
+        return "green"
+        
+@register.filter
+def colorize_label_mark(mark):
+    return colorize_label_average(mark)

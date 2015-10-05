@@ -8,6 +8,6 @@ register = template.Library()
 @register.filter(name="bool_as_icon")
 def bool_as_icon(boolean):
     if boolean:
-        return mark_safe('<span class="glyphicon glyphicon-ok-sign text-success"></span>')
+        return mark_safe('<i class="check circle icon green"></i>')
     else:
-        return mark_safe('<span class="glyphicon glyphicon-remove-circle text-danger"></span>')
+        return mark_safe('<i class="remove circle icon red"></i>')

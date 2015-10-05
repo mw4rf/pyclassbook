@@ -14,128 +14,113 @@ Student: {{ name }}
 
 {% block content %}
     
-<div class="jumbotron">
-    <div class="container">
-        <h1>{{ student.fullname }}</h1>
-        <h3><a href="mailto:{{ student.email }}">{{ student.email }}</a></h3>
-        {% if student.email_alt %}
-            <h3><a href="mailto:{{ student.email }}">{{ student.email_alt }}</a></h3>
-        {% endif %}
-    </div>
+<div class="ui very padded secondary segment">
+    <h1 class="ui header">{{ student.fullname }}</h1>
+    <div class="sub header"><a href="mailto:{{ student.email }}">{{ student.email }}</a></div>
+    {% if student.email_alt %}
+        <div class="sub header"><a href="mailto:{{ student.email }}">{{ student.email_alt }}</a></div>
+    {% endif %}
 </div>
 
 <!-- Third Time -->
 {% if student.third_time %}
-<div class="container">
-    <div class="alert alert-danger" role="alert">
-        <span class="glyphicon glyphicon-time"></span>
-        {% blocktrans with st=student.fullname %}
-            <b>{{ st }}</b> has a third time.
-        {% endblocktrans %}
-    </div>
+<div class="ui red message container">
+    <i class="handicap icon"></i>
+    {% blocktrans with st=student.fullname %}
+        <b>{{ st }}</b> has a third time.
+    {% endblocktrans %}
 </div>
 {% endif %}
 
 <!-- Foreign Language -->
 {% if not student.native_lang %}
-<div class="container">
-    <div class="alert alert-danger" role="alert">
-        <span class="glyphicon glyphicon-globe"></span>
-        {% blocktrans with st=student.fullname %}
-            <b>{{ st }}</b> is a foreign speaker.
-        {% endblocktrans %}
-    </div>
+<div class="ui red message container">
+    <i class="translate icon"></i>
+    {% blocktrans with st=student.fullname %}
+        <b>{{ st }}</b> is a foreign speaker.
+    {% endblocktrans %}
 </div>
 {% endif %}
 
 <!-- Comments -->
 {% if student.comments %}
-<div class="container">
-    <div class="panel panel-info">
-        <div class="panel-heading">
-            <h2 class="panel-title">{% trans 'Comments' %}</h2>
-        </div>
-        <div class="panel-body">
-            {{ student.comments }}
-        </div>
-    </div>
+<div class="ui segment container">
+    <div class="ui top attached blue label">{% trans 'Comments' %}</div>
+    <div class="ui text">{{ student.comments }}</div>
 </div>
 {% endif %}
 
 <!-- Charts -->
-<div class="container">
-    <div class="panel panel-default">
-      <div class="panel-heading"><h2 class="panel-title">{% trans "Marks and average progression" %}</h2></div>
-      <div class="panel-body">
-          {% include 'charts/students_marks.html' %}
-      </div>
-    </div>
+<div class="ui segment container">
+    <div class="ui top attached label">{% trans "Marks and average progression" %}</div>
+    {% include 'charts/students_marks.html' %}
 </div>
 
 <!-- Courses List -->
-<div class="container"> 
-    {% for course in student.courses.all %}
-    <div class="panel panel-default">
-      <!-- Heading -->
-      <div class="panel-heading">
-          <h2 class="panel-title">
-              <a href="{% url 'courses:show' course.id %}">{{ course.name }}</a>&nbsp;
-              ({{ course.place }}, {{ course|course_years }})
-          </h2>
-      </div>
-      
-      <!-- Summary -->
-      {% with average=student|average_for_course:course stddev=student|stddev_for_course:course %}
-      <ul class="list-group">
-          <li class="list-group-item {{average|colorize_list_group_item:10}}">
-              <b>{% trans "Average:" %}
-              {{ average }}</b>
-          </li>
-          <li class="list-group-item">
-              {% trans "Std. Dev.:" %}
-              {{ stddev }}
-          </li>
-          <li class="list-group-item">
-              {% trans "Marks Count:" %}
-              {{ student|count_marks_for_course:course }}
-          </li>
-      </ul>
-      {% endwith %}
-      
-      <!-- Future Average -->
-      <table class="table table-condensed">
-          <caption><b>{% trans "Future average given the next mark" %}</b></caption>
-          {{student|future_average:course}}
-      </table>
-      
-      <!-- Marks -->
-      <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>{% trans "Date" %}</th>
-                <th>{% trans "Mark" %}</th>
-                <th>{% trans "Exam" %}</th>
-                <th>{% trans "Subject" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for m in student|marks_for_course:course %}
-            <tr>
-                <td>{{ m.subject.exam.date }}</td>
-                {% if m.mark >= 10 %}
-                    <td class="bg-success">
-                {% else %}
-                    <td class="bg-danger">
-                {% endif %}
-                    {{ m.mark|colorize_mark }}</td>
-                <td><a href="{% url 'exams:exam' m.subject.exam.id %}">{{ m.subject.exam.name }}</a></td>
-                <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
-            </tr>
-            {% endfor %}
-            </tbody>
-      </table>
+{% for course in student.courses.all %}
+<div class="ui segment container"> 
+    
+    <div class="ui top left attached huge pink label">
+        <a href="{% url 'courses:show' course.id %}">{{ course.name }}</a>
     </div>
+    
+    <!-- Heading -->
+    <div class="ui right ribbon pink label">
+        <i class="world icon"></i>{{ course.place }}&nbsp;
+        <i class="calendar icon"></i>{{ course|course_years }}
+    </div>
+    
+    
+    <!-- Summary -->
+    <div class="segment">
+        {% with average=student|average_for_course:course stddev=student|stddev_for_course:course %}
+        <div class="ui tag label {{average|colorize_label_average}}">
+            {% trans "Average" %}
+            <div class="detail">{{ average }}</div>
+        </div>
+        <div class="ui tag label {{stddev|colorize_label_stddev}}">
+            {% trans "Std. Dev." %}
+            <div class="detail">{{ stddev }}</div>
+        </div>
+        <div class="ui tag label">
+            {% trans "Marks Count" %}
+            <div class="detail">{{ student|count_marks_for_course:course }}</div>
+        </div>
+        {% endwith %}
+    </div>
+      
+    <!-- Future Average -->
+    <table class="ui very compact small single line table">
+      <caption>{% trans "Future average given the next mark" %}</caption>
+      {{student|future_average:course}}
+    </table>
+      
+    <!-- Marks -->
+    <table class="ui single line table">
+    <thead>
+    <tr>
+        <th>{% trans "Mark" %}</th>
+        <th>{% trans "Exam" %}</th>
+        <th>{% trans "Subject" %}</th>
+        <th class="right aligned">{% trans "Date" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for m in student|marks_for_course:course %}
+    <tr>
+        <td>
+            <span class="ui circular label {{m.mark|colorize_label_mark}}">
+                {{ m.mark }}
+            </span>
+        </td>
+        <td><a href="{% url 'exams:exam' m.subject.exam.id %}">{{ m.subject.exam.name }}</a></td>
+        <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
+        <td class="right aligned">{{ m.subject.exam.date }}</td>
+    </tr>
     {% endfor %}
+    </tbody>
+    </table>
 </div>
+    {% endfor %}
 
 {% endblock %}

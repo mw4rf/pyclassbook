@@ -1,7 +1,7 @@
 {% load navactive %}
 {% load i18n %}
 
-<div id="navbar" class="ui large borderless fixed menu">
+<div id="navbar" class="ui large borderless menu">
     <a class="item header" href="/">pyClassBook</a>
     <a class="item {% navactive request 'students:index' %}" href="{% url 'students:index' %}">
         <i class="student icon"></i>

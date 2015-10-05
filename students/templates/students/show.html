@@ -14,7 +14,7 @@ Student: {{ name }}
 
 {% block content %}
     
-<div class="ui piled very padded container segment">
+<div class="ui very padded secondary segment">
     <h1 class="ui header">{{ student.fullname }}</h1>
     <div class="sub header"><a href="mailto:{{ student.email }}">{{ student.email }}</a></div>
     {% if student.email_alt %}
@@ -44,47 +44,50 @@ Student: {{ name }}
 
 <!-- Comments -->
 {% if student.comments %}
-<div class="ui segment blue container">
-    <h2 class="ui header">{% trans 'Comments' %}</h2>
+<div class="ui segment container">
+    <div class="ui top attached blue label">{% trans 'Comments' %}</div>
     <div class="ui text">{{ student.comments }}</div>
 </div>
 {% endif %}
 
 <!-- Charts -->
 <div class="ui segment container">
-    <h2 class="ui header">{% trans "Marks and average progression" %}</h2>
+    <div class="ui top attached label">{% trans "Marks and average progression" %}</div>
     {% include 'charts/students_marks.html' %}
 </div>
 
 <!-- Courses List -->
 {% for course in student.courses.all %}
 <div class="ui segment container"> 
+    
+    <div class="ui top left attached huge pink label">
+        <a href="{% url 'courses:show' course.id %}">{{ course.name }}</a>
+    </div>
+    
     <!-- Heading -->
-    <h2 class="ui header">
-      <a href="{% url 'courses:show' course.id %}">{{ course.name }}</a>&nbsp;
-      <div class="ui label"><i class="world icon"></i>{{ course.place }}</div>
-      <div class="ui label"><i class="calendar icon"></i>{{ course|course_years }}</div>
-    </h2>
-      
+    <div class="ui right ribbon pink label">
+        <i class="world icon"></i>{{ course.place }}&nbsp;
+        <i class="calendar icon"></i>{{ course|course_years }}
+    </div>
+    
+    
     <!-- Summary -->
-    {% with average=student|average_for_course:course stddev=student|stddev_for_course:course %}
-    
-    <div class="ui tag label {{average|colorize_label_average}}">
-        {% trans "Average" %}
-        <div class="detail">{{ average }}</div>
+    <div class="segment">
+        {% with average=student|average_for_course:course stddev=student|stddev_for_course:course %}
+        <div class="ui tag label {{average|colorize_label_average}}">
+            {% trans "Average" %}
+            <div class="detail">{{ average }}</div>
+        </div>
+        <div class="ui tag label {{stddev|colorize_label_stddev}}">
+            {% trans "Std. Dev." %}
+            <div class="detail">{{ stddev }}</div>
+        </div>
+        <div class="ui tag label">
+            {% trans "Marks Count" %}
+            <div class="detail">{{ student|count_marks_for_course:course }}</div>
+        </div>
+        {% endwith %}
     </div>
-    
-    <div class="ui tag label {{stddev|colorize_label_stddev}}">
-        {% trans "Std. Dev." %}
-        <div class="detail">{{ stddev }}</div>
-    </div>
-    
-    <div class="ui tag label">
-        {% trans "Marks Count" %}
-        <div class="detail">{{ student|count_marks_for_course:course }}</div>
-    </div>
-    
-    {% endwith %}
       
     <!-- Future Average -->
     <table class="ui very compact small single line table">
@@ -92,32 +95,31 @@ Student: {{ name }}
       {{student|future_average:course}}
     </table>
       
-      <!-- Marks -->
-      <table class="ui single line table">
-            <thead>
-            <tr>
-                <th>{% trans "Mark" %}</th>
-                <th>{% trans "Exam" %}</th>
-                <th>{% trans "Subject" %}</th>
-                <th class="right aligned">{% trans "Date" %}</th>
-            </tr>
-            </thead>
-            <tbody>
-            {% for m in student|marks_for_course:course %}
-            <tr>
-                <td>
-                    <span class="ui circular label {{m.mark|colorize_label_mark}}">
-                        {{ m.mark }}
-                    </span>
-                </td>
-                <td><a href="{% url 'exams:exam' m.subject.exam.id %}">{{ m.subject.exam.name }}</a></td>
-                <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
-                <td class="right aligned">{{ m.subject.exam.date }}</td>
-            </tr>
-            {% endfor %}
-            </tbody>
-      </table>
-    </div>
+    <!-- Marks -->
+    <table class="ui single line table">
+    <thead>
+    <tr>
+        <th>{% trans "Mark" %}</th>
+        <th>{% trans "Exam" %}</th>
+        <th>{% trans "Subject" %}</th>
+        <th class="right aligned">{% trans "Date" %}</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for m in student|marks_for_course:course %}
+    <tr>
+        <td>
+            <span class="ui circular label {{m.mark|colorize_label_mark}}">
+                {{ m.mark }}
+            </span>
+        </td>
+        <td><a href="{% url 'exams:exam' m.subject.exam.id %}">{{ m.subject.exam.name }}</a></td>
+        <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
+        <td class="right aligned">{{ m.subject.exam.date }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+    </table>
 </div>
     {% endfor %}
 

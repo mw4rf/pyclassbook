@@ -24,7 +24,7 @@ Student: {{ name }}
 
 <!-- Third Time -->
 {% if student.third_time %}
-<div class="ui inverted red segment container">
+<div class="ui red message container">
         <i class="handicap icon"></i>
         {% blocktrans with st=student.fullname %}
             <b>{{ st }}</b> has a third time.
@@ -34,7 +34,7 @@ Student: {{ name }}
 
 <!-- Foreign Language -->
 {% if not student.native_lang %}
-<div class="ui inverted red segment container">
+<div class="ui red message container">
     <i class="flag icon"></i>
     {% blocktrans with st=student.fullname %}
         <b>{{ st }}</b> is a foreign speaker.

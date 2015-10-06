@@ -15,25 +15,15 @@ APP_VERSION = "0.1"
 from datetime import date
 COPYRIGHT = "Copyright © 2014-%s Guillaume Florimond" % str(date.today().year)
 
-# Pagination
-STUDENTS_PER_PAGE   = 100
-COURSES_PER_PAGE    = 10
-EXAMS_PER_PAGE      = 10
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__ + "../..")))
 
+print(APP_NAME + " launched from " + BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#^)piavg#9tuqe$3q_!r9si*j=6837s+i0@lb44f)mdju36bt='
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -88,22 +78,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'pyclassbook.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/1.8/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 #LANGUAGE_CODE = 'en-us'
-LANGUAGE_CODE = "fr"
 
 LOCALE_PATHS = [
     os.path.join(BASE_DIR, 'locale/'),
@@ -115,7 +93,6 @@ LANGUAGES = [
     ('en', _('English')),
 ]
 
-TIME_ZONE = 'Europe/Paris'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True

@@ -48,9 +48,10 @@ class Student(models.Model):
     def average(self):
         index = 0
         marks = 0
-        for m in Mark.objects.filter(student=self.id):
-            index = index + 1
-            marks = marks + m.mark
+        for m in Mark.objects.filter(student=self.id).filter(count=True):
+            for x in range(m.subject.exam.coeff):
+                index = index + 1
+                marks = marks + m.mark
         try:
             return float("{0:.2f}".format(marks / index))
         except ZeroDivisionError:
@@ -59,10 +60,11 @@ class Student(models.Model):
     def average_for_course(self, course):
         index = 0
         marks = 0
-        for m in Mark.objects.filter(student=self.id):
+        for m in Mark.objects.filter(student=self.id).filter(count=True):
             if m.subject.exam.course == course:
-                marks = marks + m.mark
-                index = index + 1
+                for x in range(m.subject.exam.coeff):
+                    marks = marks + m.mark
+                    index = index + 1
         try:
             return float("{0:.2f}".format(marks / index))
         except ZeroDivisionError:
@@ -89,7 +91,7 @@ class Student(models.Model):
         from django.utils import formats
         from collections import OrderedDict
         
-        marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
+        marks = Mark.objects.filter(student=self.id).filter(count=True).order_by('subject__exam__date')
         stats = OrderedDict() # needed to key the sort order by date, as simple dict do not preserve order
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
@@ -102,21 +104,23 @@ class Student(models.Model):
         import statistics
         from collections import OrderedDict
         
-        marks = Mark.objects.filter(student=self.id).order_by('subject__exam__date')
+        marks = Mark.objects.filter(student=self.id).filter(count=True).order_by('subject__exam__date')
         temp = []
         stats = OrderedDict() # needed to key the sort order by date, as simple dict do not preserve order
         for mark in marks:
             date = formats.date_format(mark.subject.exam.date, "SHORT_DATE_FORMAT")
             # Get average with this new mark
-            temp.append(mark.mark)
+            for x in range(mark.subject.exam.coeff):
+                temp.append(mark.mark)
             stats[date] = float("{0:.1f}".format(statistics.mean(temp)))
         return stats
         
     def future_average(self, course):
         marks = []
-        for m in Mark.objects.filter(student=self.id):
+        for m in Mark.objects.filter(student=self.id).filter(count=True):
             if m.subject.exam.course == course:
-                marks.append(m.mark)
+                for x in range(m.subject.exam.coeff):
+                    marks.append(m.mark)
         import statistics
         stats = {}
         for i in range(0,21):
@@ -139,6 +143,7 @@ class Mark(models.Model):
     student     = models.ForeignKey(Student, verbose_name=_('Student'))
     subject     = models.ForeignKey('exams.Subject', verbose_name=_('Subject'))
     mark        = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(20)], verbose_name=_('Mark'))
+    count       = models.BooleanField(default=True, verbose_name=_('Count this in the average ?'))
     comment     = models.TextField(blank=True, verbose_name=_('Comments'))
     # Auto
     created_at  = models.DateTimeField(auto_now_add=True)

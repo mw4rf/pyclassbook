@@ -101,6 +101,7 @@ Student: {{ name }}
     <tr>
         <th>{% trans "Mark" %}</th>
         <th>{% trans "Exam" %}</th>
+        <th>{% trans "Coeff." %}</th>
         <th>{% trans "Subject" %}</th>
         <th class="right aligned">{% trans "Date" %}</th>
     </tr>
@@ -109,11 +110,18 @@ Student: {{ name }}
     {% for m in student|marks_for_course:course %}
     <tr>
         <td>
+            {% if m.count %}
             <span class="ui circular label {{m.mark|colorize_label_mark}}">
                 {{ m.mark }}
             </span>
+            {% endif %}
         </td>
         <td><a href="{% url 'exams:exam' m.subject.exam.id %}">{{ m.subject.exam.name }}</a></td>
+        <td>
+            {% if m.subject.exam.has_marks %}
+            <span class="ui circular label">{{ m.subject.exam.coeff }}</span>
+            {% endif %}
+        </td>
         <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
         <td class="right aligned">{{ m.subject.exam.date }}</td>
     </tr>

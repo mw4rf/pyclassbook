@@ -16,6 +16,7 @@ class Exam(models.Model):
     date =          models.DateField(blank=True, null=True, verbose_name=_('Date'))
     time_allowed =  models.IntegerField(blank=True, null=True, verbose_name=_('Time Allowed'))
     place =         models.CharField(max_length = 254, default='', verbose_name=_('Place'))
+    coeff           = models.IntegerField(default=1, verbose_name=_('Coefficient'))
     comments =      models.TextField(blank=True, default='', verbose_name=_('Comments'))
     # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
@@ -26,6 +27,13 @@ class Exam(models.Model):
         
     def __str__(self):
         return self.name
+    
+    @property
+    def has_marks(self):
+        if self.coeff < 1:
+            return False
+        else:
+            return True
     
     @property    
     def subjects(self):
@@ -112,9 +120,9 @@ class Subject(models.Model):
     # UUID
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     # Fields
-    exam =      models.ForeignKey(Exam, verbose_name=_('Exam'))
-    title =     models.TextField(blank=True, default='', verbose_name=_('Title'))
-    kind =      models.CharField(max_length = 254, default='', verbose_name=_('Kind'))
+    exam            = models.ForeignKey(Exam, verbose_name=_('Exam'))
+    title           = models.TextField(blank=True, default='', verbose_name=_('Title'))
+    kind            = models.CharField(max_length = 254, default='', verbose_name=_('Kind'))
     # Auto
     created_at  = models.DateTimeField(auto_now_add=True)
     updated_at  = models.DateTimeField(auto_now=True)

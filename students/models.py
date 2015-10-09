@@ -14,9 +14,9 @@ class Student(models.Model):
     # Fields
     firstname   = models.CharField(max_length = 100, verbose_name=_('firstname'))
     lastname    = models.CharField(max_length = 100, verbose_name=_('lastname'))
-    email       = models.EmailField(max_length = 254, verbose_name=_('e-mail'))
+    email       = models.EmailField(max_length = 254, blank=True, verbose_name=_('e-mail'))
     email_alt   = models.EmailField(max_length = 254, blank=True, verbose_name=_('Alternative e-mail'))
-    birth       = models.DateField(null=True, verbose_name=_('Birth date'))
+    birth       = models.DateField(null=True, blank=True, verbose_name=_('Birth date'))
     native_lang = models.BooleanField(default=True, verbose_name=_('Native language ?'))
     third_time  = models.BooleanField(default=False, verbose_name=_('Has a third time ?'))
     comments    = models.TextField(blank=True, default='', verbose_name=_('Comments'))

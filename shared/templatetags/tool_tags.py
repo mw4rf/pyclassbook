@@ -9,3 +9,7 @@ def list_keys(d):
 @register.filter
 def list_values(d):
     return list(d.values())
+    
+@register.filter
+def datetime_to_date(d):
+    return d.date()

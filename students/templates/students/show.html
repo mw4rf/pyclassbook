@@ -5,6 +5,7 @@
 {% load marks_tags %}
 {% load courses_tags %}
 {% load colorize_tags %}
+{% load tool_tags %}
 
 {% block title %}
 {% blocktrans trimmed with name=student.fullname %}
@@ -123,7 +124,7 @@ Student: {{ name }}
             {% endif %}
         </td>
         <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
-        <td class="right aligned">{{ m.subject.exam.date }}</td>
+        <td class="right aligned">{{ m.created_at|datetime_to_date }}</td>
     </tr>
     {% endfor %}
     </tbody>

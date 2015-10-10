@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load marks_tags %}
+{% load boolean_tags %}
 
 {% block title %}
 {% blocktrans trimmed with name=subject.exam.name kind=subject.kind %}
@@ -29,6 +30,7 @@ Subject: {{ name }} ({{kind}})
           <tr>
               <th>{% trans "Student" %}</th>
               <th>{% trans "Mark" %}</th>
+              <th>{% trans "Count In Average" %}</th>
               <th>{% trans "Comment" %}</th>
           </tr>
           </thead>
@@ -42,6 +44,7 @@ Subject: {{ name }} ({{kind}})
                       <td class="negative">
                   {% endif %}
                       {{ mark.mark|colorize_mark }}</td>
+                  <td>{{ mark.count|bool_as_icon }}</td>
                   <td>{{ mark.comment }}</td>
               </tr>
           {% endfor %}

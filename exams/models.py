@@ -131,7 +131,7 @@ class Subject(models.Model):
         verbose_name = _('Subject')
     
     def __str__(self):
-        return str(self.exam) + " (" + self.kind + ")"
+        return str(self.exam) + ", " + str(self.exam.course) + " (" + self.kind + ")"
         
     @property
     def marks(self):
@@ -144,7 +144,7 @@ class Subject(models.Model):
     @property
     def marks_as_array(self):
         marks = []
-        for m in self.marks:
+        for m in Mark.objects.filter(subject=self.id).filter(count=True):
             marks.append(m.mark)
         return marks
         

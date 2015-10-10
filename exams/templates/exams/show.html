@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load marks_tags %}
+{% load boolean_tags %}
 {% load i18n %}
 
 {% block title %}
@@ -89,6 +90,7 @@ Exam: {{ name }} ({{c}})
           <tr>
               <th>{% trans "Student" %}</th>
               <th>{% trans "Mark" %}</th>
+              <th>{% trans "Count In Average" %}</th>
               <th>{% trans "Subject" %}</th>
           </tr>
           </thead>
@@ -102,6 +104,7 @@ Exam: {{ name }} ({{c}})
                       <td class="negative">
                   {% endif %}
                       {{ mark.mark|colorize_mark }}</td>
+                  <td>{{ mark.count|bool_as_icon }}</td>
                   <td><a href="{% url 'exams:subject' mark.subject.id %}">{{ mark.subject.kind }}</a></td>
               </tr>
           {% endfor %}

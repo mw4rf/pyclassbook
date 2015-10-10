@@ -97,14 +97,15 @@ Student: {{ name }}
     </table>
       
     <!-- Marks -->
-    <table class="ui single line table">
+    <table class="ui table">
     <thead>
     <tr>
-        <th>{% trans "Mark" %}</th>
-        <th>{% trans "Exam" %}</th>
-        <th>{% trans "Coeff." %}</th>
-        <th>{% trans "Subject" %}</th>
-        <th class="right aligned">{% trans "Date" %}</th>
+        <th class="one wide">{% trans "Mark" %}</th>
+        <th class="two wide">{% trans "Exam" %}</th>
+        <th class="two wide">{% trans "Subject" %}</th>
+        <th class="one wide">{% trans "Coeff." %}</th>
+        <th class="two wide">{% trans "Date" %}</th>
+        <th class="eight wide">{% trans "Comments" %}</th>
     </tr>
     </thead>
     <tbody>
@@ -118,13 +119,14 @@ Student: {{ name }}
             {% endif %}
         </td>
         <td><a href="{% url 'exams:exam' m.subject.exam.id %}">{{ m.subject.exam.name }}</a></td>
+        <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
         <td>
             {% if m.subject.exam.has_marks %}
             <span class="ui circular label">{{ m.subject.exam.coeff }}</span>
             {% endif %}
         </td>
-        <td><a href="{% url 'exams:subject' m.subject.id %}">{{ m.subject.kind }}</a></td>
-        <td class="right aligned">{{ m.created_at|datetime_to_date }}</td>
+        <td>{{ m.created_at|datetime_to_date }}</td>
+        <td>{{ m.comment }}</td>
     </tr>
     {% endfor %}
     </tbody>

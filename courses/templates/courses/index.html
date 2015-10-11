@@ -16,6 +16,7 @@
             <th><a href="?{% sort_row request 'order_by' 'level' %}">{% trans "Level" %}</a></th>
             <th><a href="?{% sort_row request 'order_by' 'kind' %}">{% trans "Kind" %}</a></th>
             <th><a href="?{% sort_row request 'order_by' 'place' %}">{% trans "Place" %}</a></th>
+            <th>{% trans "Students Count" %}</th>
         </tr>
         </thead>
         <tbody>
@@ -26,6 +27,7 @@
             <td>{{ c.level }}</td>
             <td>{{ c.kind }}</td>
             <td>{{ c.place }}</td>
+            <td>{{ c.count_students }}</td>
         </tr>
         {% endfor %}
         </tbody>

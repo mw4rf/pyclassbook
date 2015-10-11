@@ -1,7 +1,7 @@
 from .defaults import *
 
 # Pagination
-STUDENTS_PER_PAGE   = 100
+STUDENTS_PER_PAGE   = 200
 COURSES_PER_PAGE    = 10
 EXAMS_PER_PAGE      = 10
 

@@ -39,6 +39,10 @@ class Course(models.Model):
         return students
         
     @property
+    def count_students(self):
+        return len(self.students)
+        
+    @property
     def averages(self):
         ''' Returns a list of averages for this course. '''
         students = self.students

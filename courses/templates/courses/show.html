@@ -59,7 +59,7 @@ Course: {{ name }} ({{year}})
 <!-- Students -->
 <div class="ui container segment">    
       <h2 class="ui header">{% trans "Students" %}</h2>
-      <table class="ui very basic single line table">
+      <table class="ui very basic table">
           <thead>
           <tr>
               <th>{% trans "Name" %}</th>
@@ -69,6 +69,7 @@ Course: {{ name }} ({{year}})
               <th>{% trans "e-mail" %}</th>
               <th>{% trans "Natv. Lang." %}</th>
               <th>{% trans "3rd Time" %}</th>
+              <th>{% trans "Comments" %}</th>
           </tr>
           </thead>
           <tbody>
@@ -93,6 +94,7 @@ Course: {{ name }} ({{year}})
               <td><a href="mailto:{{s.email}}">{{ student.email }}</a></td>
               <td>{{ student.native_lang|bool_as_icon }}</td>
               <td>{{ student.third_time|bool_as_icon }}</td>
+              <td>{{ student.comments }}</td>
           </tr>
           {% endfor %}
           </tbody>

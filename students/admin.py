@@ -3,9 +3,15 @@ from django.contrib import admin
 from .models import Student, Mark
 from courses.models import Course
 
+from django.forms import TextInput, Textarea
+from django.db import models
+
 class MarkInline(admin.TabularInline):
     model = Mark
     extra = 0
+    formfield_overrides = {
+        models.TextField: {'widget': Textarea(attrs={'rows':2, 'cols':40})},
+    }
 
 class StudentAdmin(admin.ModelAdmin):
     inlines = [MarkInline]

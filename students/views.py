@@ -9,7 +9,10 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.contrib.auth.decorators import login_required
 
-from .models import Student
+from .models import Student, Mark
+from exams.models import Subject
+
+from .forms import MarkForm
 
 @login_required
 def index_full(request):
@@ -45,9 +48,23 @@ def show(request, student_id):
     ''' Show a student details. '''
     try:
         student = Student.objects.get(pk=student_id)
+        # Add Mark Form
+        if request.method == 'POST':
+            form = MarkForm(request.POST)
+            if form.is_valid():
+                markn = form.cleaned_data['mark']
+                subject = form.cleaned_data['subject']
+                count = form.cleaned_data['count']
+                comment = form.cleaned_data['comment']
+                
+                mark = Mark.objects.create(mark=markn, subject=subject, count=count, comment=comment, student=student)
+                mark.save()
+                student.save()
     except Student.DoesNotExist:
         raise Http404("This student doesn't exist.")
-    return render(request, 'students/show.html', {'student': student})
+    # Reset form
+    form = MarkForm()
+    return render(request, 'students/show.html', {'student': student, 'form': form})
 
 @login_required
 def csv(request):
@@ -74,3 +91,19 @@ def csv(request):
            writer.writerow(row)
 
     return response
+    
+    
+## Forms
+@login_required
+def add_mark(request, student_id):
+    if request.method == 'POST':
+        form = MarkForm(request.POST)
+        if form.is_valid():
+            # process the data in form.cleaned_data as required
+            pass
+
+    # if a GET (or any other method) we'll create a blank form
+    else:
+        form = MarkForm()
+
+    return render(request, 'students/show.html', {'student': student, 'form': form})

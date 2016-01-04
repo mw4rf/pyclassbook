@@ -131,6 +131,22 @@ Student: {{ name }}
     {% endfor %}
     </tbody>
     </table>
+    
+    <!-- Add Mark Form -->
+    <form action="/students/show/{{student.id}}/" method="post" class="ui small form">
+        {% csrf_token %}
+        <div class="inline fields">
+            {% for field in form %}
+                <div class="field">
+                {{ field }}
+                </div>
+            {% endfor %}
+                <input type="hidden" name="course" value="{{course.id}}">
+                <input type="hidden" name="student" value="{{student.id}}">   
+                <div class="field"><input type="submit" class="ui submit button" value="{% trans "Add Mark" %}" /></div>
+        </div>
+    </form>
+    
 </div>
     {% endfor %}
 

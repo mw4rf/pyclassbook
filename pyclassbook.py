@@ -19,4 +19,4 @@ if __name__ == "__main__":
         os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pyclassbook.settings")
         
 
-call(["manage.py", "runserver"])
+call(["./manage.py", "runserver"])

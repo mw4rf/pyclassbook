@@ -21,7 +21,7 @@ from home import views as home
 
 urlpatterns = [
     url(r'^$', home.index, name='home'),
-    url(r'^home/$', include('home.urls', namespace='home')),
+    url(r'^home/', include('home.urls', namespace='home')),
     url(r'^admin/', include(admin.site.urls)),
     # Models
     url(r'^students/', include('students.urls', namespace='students')),

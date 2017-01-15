@@ -13,6 +13,7 @@ class Course(models.Model):
     comments =      models.TextField(blank=True, verbose_name=_('Comments'))
     start_date =    models.DateField(blank=True, verbose_name=_('Start date'))
     end_date =      models.DateField(blank=True, verbose_name=_('End date'))
+    term =          models.IntegerField(blank=True, verbose_name=_('Term')) # semestre
     # Auto
     created_at =    models.DateTimeField(auto_now_add=True)
     updated_at =    models.DateTimeField(auto_now=True)

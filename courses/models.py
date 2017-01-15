@@ -28,6 +28,10 @@ class Course(models.Model):
         return "%s, %s, %s-%s" % (self.name, self.place, self.start_date.year, self.end_date.year)
     
     @property
+    def year(self):
+        return "%s-%s" % (self.start_date.year, self.end_date.year)
+    
+    @property
     def exams(self):
         from exams.models import Exam
         return Exam.objects.all().filter(course=self.id)

@@ -131,7 +131,7 @@ class Subject(models.Model):
         verbose_name = _('Subject')
     
     def __str__(self):
-        return str(self.exam) + ", " + str(self.exam.course) + " (" + self.kind + ")"
+        return "%s - %s, %s (%s)" % (self.exam.course.year, self.exam.course, self.exam, self.kind)
         
     @property
     def marks(self):

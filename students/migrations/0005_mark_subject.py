@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='mark',
             name='subject',
-            field=models.ForeignKey(default=1, to='exams.Subject'),
+            field=models.ForeignKey(to='exams.Subject'),
             preserve_default=False,
         ),
     ]
